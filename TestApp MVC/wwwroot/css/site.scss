@@ -1,32 +1,147 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
-for details on configuring this project to bundle and minify static web assets. */
+﻿/*VARIABLES*/
+$primary-yellow: #FFD851;
+$primary-gray: rgb(51,51,51);
+$darken-perc: 5%;
+$border-radius: 10px ;
+$main-box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+$inverted-box-shadow: -3px 3px 3px rgba(0,0,0,0.2);
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.yellow-bg-img{
+    z-index: -5;
+    position:absolute;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: #f5f7f9;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
+h1{
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.header-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    #module-select {
+        border: none;
+        background: transparent;
+        font-weight: bold;
+        outline: none;
+
+        option{
+            border: none;
+            background: none;
+
+        }
+    }
+}
+
 .body-content {
+    margin-top:75px;
     padding-left: 15px;
     padding-right: 15px;
+    z-index: 1;
 }
 
-/* Carousel */
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
 .carousel-inner .item img[src$=".svg"] {
     width: 100%;
 }
 
-/* QR code generator */
 #qrCode {
     margin: 15px;
 }
+
+.navbar.navbar-inverse.navbar-fixed-top {
+    background-color: $primary-yellow;
+    border: none;
+    padding-right: 30px;
+
+    a {
+        color: lighten($primary-gray, $darken-perc);
+
+        &:hover {
+            color: $primary-gray;
+            font-weight: bold;
+        }
+    }
+
+}
+
+.tests-wrapper {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.test-container {
+    width: 100%;
+    height: 250px;
+    padding: 15px;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $main-box-shadow;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    .num-submissions {
+        font-size: 0.9em;
+    }
+
+    .submissions-graph {
+        width: 80%;
+        align-self: center;
+        height: 150px;
+        /*background: rgba(0,0,0,0.05);*/
+        margin: 10px 0;
+        text-align: center;
+        border-radius: $border-radius;
+        box-shadow: $inverted-box-shadow;
+        //removed when graph is working
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:center;
+    }
+
+    a.view-test-link {
+        margin-top: 10px;
+        align-self: flex-end;
+        justify-self: flex-end;
+        color: $primary-gray;
+
+        &:hover{
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+
+    /*&:hover {
+        cursor: pointer;
+        background: darken(white, $darken-perc);
+    }*/
+}
+
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
