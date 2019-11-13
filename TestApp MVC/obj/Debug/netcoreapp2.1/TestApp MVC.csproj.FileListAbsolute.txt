@@ -1,0 +1,32 @@
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\bin\Debug\netcoreapp2.1\TestApp MVC.deps.json
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\bin\Debug\netcoreapp2.1\TestApp MVC.runtimeconfig.json
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\bin\Debug\netcoreapp2.1\TestApp MVC.runtimeconfig.dev.json
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\bin\Debug\netcoreapp2.1\TestApp MVC.dll
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.csprojAssemblyReference.cache
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.csproj.CoreCompileInputs.cache
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.RazorAssemblyInfo.cache
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.RazorAssemblyInfo.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.AssemblyInfoInputs.cache
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.AssemblyInfo.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.TagHelpers.input.cache
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.TagHelpers.output.cache
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.RazorCoreGenerate.cache
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.RazorTargetAssemblyInfo.cache
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.RazorTargetAssemblyInfo.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\bin\Debug\netcoreapp2.1\TestApp MVC.pdb
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\bin\Debug\netcoreapp2.1\TestApp MVC.Views.dll
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\bin\Debug\netcoreapp2.1\TestApp MVC.Views.pdb
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.Views.pdb
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.dll
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.pdb
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.csproj.CopyComplete
