@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TestApp_MVC.Models;
 
@@ -12,6 +13,10 @@ namespace TestApp_MVC.Controllers
     {
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
             return View();
         }
 

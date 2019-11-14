@@ -63,7 +63,7 @@ using TestApp_MVC.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(47, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ec35d80f19af4c80b70e2380ffb9a813", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0f955779dfc84fa98d3c382214b7e8ff", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -82,7 +82,7 @@ using TestApp_MVC.Models;
             WriteLiteral("\r\n\r\n<div class=\"body-content\">\r\n    <div class=\"container\">\r\n        <div class=\"header-wrapper\">\r\n            <h1>Recent Tests</h1>\r\n            <select id=\"module-select\">\r\n                ");
             EndContext();
             BeginContext(297, 40, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c5170f4bec24527aec63ce57a9f82a0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6c3274804e824e1489dc5430ae086ad6", async() => {
                 BeginContext(317, 11, true);
                 WriteLiteral("All Modules");
                 EndContext();
@@ -103,7 +103,7 @@ using TestApp_MVC.Models;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(355, 54, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ce25c7874f948249e65a7886373c5cb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1680a55fba6247b789cd0bbacc7264ab", async() => {
                 BeginContext(375, 25, true);
                 WriteLiteral("PROG6212 - Programming 2B");
                 EndContext();
@@ -124,7 +124,7 @@ using TestApp_MVC.Models;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(427, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ec0f68410c3f4b08ad9c4795f6248673", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "26036ff045504d36a4bc4d709303e59e", async() => {
                 BeginContext(447, 28, true);
                 WriteLiteral("CLDV6212 - Cloud Development");
                 EndContext();
@@ -145,7 +145,7 @@ using TestApp_MVC.Models;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(502, 73, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8288fbe5a34b4b85869825ac49943875", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d40a57dfaa4c4ba290fd5232bd96950b", async() => {
                 BeginContext(522, 44, true);
                 WriteLiteral("OPSC6212 - Open Source Coding (Introduction)");
                 EndContext();

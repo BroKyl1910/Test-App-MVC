@@ -1,8 +1,10 @@
 ﻿/*VARIABLES*/
 $primary-yellow: #FFD851;
 $primary-gray: rgb(51,51,51);
-$darken-perc: 5%;
-$border-radius: 10px ;
+$darken-perc: 10%;
+$border-radius: 10px;
+$border-radius-big: 20px;
+$border-radius-small: 5px;
 $main-box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
 $inverted-box-shadow: -3px 3px 3px rgba(0,0,0,0.2);
 
@@ -10,9 +12,22 @@ $inverted-box-shadow: -3px 3px 3px rgba(0,0,0,0.2);
     font-family: 'Roboto', sans-serif;
 }
 
-.yellow-bg-img{
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.51);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.yellow-bg-img {
     z-index: -5;
-    position:absolute;
+    position: absolute;
 }
 
 body {
@@ -21,10 +36,38 @@ body {
     background: #f5f7f9;
 }
 
-h1{
+h1 {
     font-size: 1.6em;
     font-weight: bold;
 }
+
+
+h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.default-yellow-button {
+    border-radius: $border-radius-small;
+    box-shadow: $main-box-shadow;
+    border: none;
+    outline: none;
+    background: $primary-yellow;
+    padding: 10px 20px;
+
+    &:hover {
+        background: darken($primary-yellow, $darken-perc);
+        font-weight: bold;
+    }
+}
+
+.sub-text{
+    font-size: 0.8em;
+    color: lighten($primary-gray, $darken-perc);
+}
+
 
 .header-wrapper {
     display: flex;
@@ -37,16 +80,15 @@ h1{
         font-weight: bold;
         outline: none;
 
-        option{
+        option {
             border: none;
             background: none;
-
         }
     }
 }
 
 .body-content {
-    margin-top:75px;
+    margin-top: 75px;
     padding-left: 15px;
     padding-right: 15px;
     z-index: 1;
@@ -78,7 +120,6 @@ h1{
             font-weight: bold;
         }
     }
-
 }
 
 .tests-wrapper {
@@ -97,13 +138,6 @@ h1{
     display: flex;
     flex-direction: column;
 
-    h2 {
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-top: 0;
-        margin-bottom: 5px;
-    }
-
     .num-submissions {
         font-size: 0.9em;
     }
@@ -121,7 +155,7 @@ h1{
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content:center;
+        justify-content: center;
     }
 
     a.view-test-link {
@@ -130,16 +164,111 @@ h1{
         justify-self: flex-end;
         color: $primary-gray;
 
-        &:hover{
+        &:hover {
             text-decoration: none;
             font-weight: bold;
         }
     }
+}
 
-    /*&:hover {
-        cursor: pointer;
-        background: darken(white, $darken-perc);
-    }*/
+.container.login-container {
+    border-radius: $border-radius-big;
+    box-shadow: $main-box-shadow;
+    height: 100%;
+    background: white;
+    padding: 15px;
+    width: 45%;
+
+    .login-container-header {
+        width: 100%;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+
+
+        .info-block {
+            padding: 10px;
+            text-align: center;
+            align-self: center;
+            border-right: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .login-wrapper {
+            padding: 10px;
+
+            form {
+                margin-top: 30px;
+                width: 90%;
+
+                .form-group {
+                    margin-left: 0;
+                }
+            }
+
+            a {
+                color: $primary-gray;
+                margin-left: 15px;
+
+                &:hover {
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.container.register-container {
+    border-radius: $border-radius-big;
+    box-shadow: $main-box-shadow;
+    height: 100%;
+    background: white;
+    padding: 15px;
+    width: 30%;
+
+    .register-container-header {
+        width: 100%;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .row {
+        .registration-form {
+            width: 90%;
+            margin: 30px auto;
+
+            .scrollable{
+                max-height: 370px;
+                overflow:auto;
+                padding-right: 15px;
+            }
+
+            .form-group {
+                margin-left: 0;
+            }
+
+            #lbl-error{
+                margin-top: 30px;
+            }
+        }
+
+        a {
+            color: $primary-gray;
+            margin-left: 15px;
+
+            &:hover {
+                font-weight: bold;
+                text-decoration: none;
+            }
+        }
+    }
 }
 
 

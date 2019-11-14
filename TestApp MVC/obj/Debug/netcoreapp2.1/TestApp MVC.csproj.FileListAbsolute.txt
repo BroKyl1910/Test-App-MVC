@@ -27,8 +27,5 @@ F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MV
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.dll
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.pdb
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.csproj.CopyComplete
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Create.g.cshtml.cs
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Delete.g.cshtml.cs
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Details.g.cshtml.cs
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Edit.g.cshtml.cs
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Index.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Login.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Register.g.cshtml.cs

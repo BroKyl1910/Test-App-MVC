@@ -33,6 +33,8 @@ namespace TestApp_MVC
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddSession();
             services.AddDbContext<TestApp.MVC.Models.TestAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TestAppContext")));
         }
 
@@ -51,11 +53,13 @@ namespace TestApp_MVC
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseSession();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Users}/{action=Login}/{id?}");
             });
         }
     }

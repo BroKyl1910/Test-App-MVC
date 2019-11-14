@@ -1,0 +1,149 @@
+﻿@model TestApp.MVC.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<img class="yellow-bg-img" src="~/images/Background.png" />
+
+<div class="body-content">
+    <div class="container register-container">
+        <div class="register-container-header">
+            <h1>Register</h1>
+            <p class="sub-text">All fields are required</p>
+        </div>
+        <div class="row">
+            <div class="registration-form">
+                <div class="scrollable">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label class="control-label">Username</label>
+                        <input type="text" id="username-input" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <input id="password-input" type="Password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Confirm Password</label>
+                        <input id="confirm-password-input" type="Password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">First Name</label>
+                        <input id="first-name-input" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Surname</label>
+                        <input id="surname-input" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">User Type</label>
+                        <select id="user-type-select" class="form-control">
+                            <option value="0">Student</option>
+                            <option value="1">Lecturer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="identification-label" class="control-label">Student Number</label>
+                        <input id="identification-select" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group" id="courses-group">
+                        <label class="control-label">Course</label>
+                        <select id="course-select" class="form-control">
+                            @foreach (TestApp.MVC.Models.Course course in ViewBag.Courses)
+                            {
+                                <option value="@course.CourseId">@course.CourseName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group" id="modules-group" style="display: none;">
+                        <label class="control-label">Modules</label>
+                        <select id="modules-select" class="form-control" multiple>
+                            @foreach (TestApp.MVC.Models.Module module in ViewBag.Modules)
+                            {
+                                <option value="@module.ModuleId">@module.ModuleName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <label class="control-label text-danger" id="lbl-error"></label>
+                <div class="form-group">
+                    <button id="submit-button" class="default-yellow-button">Register</button>
+                    <a href="/Users/Login">Already a user? Log in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#user-type-select").on("change", () => {
+        var userType = $("#user-type-select").val();
+        if (userType == 0) {
+            //student
+            $("#identification-label").text("Student Number");
+            $('#modules-group').hide();
+            $('#courses-group').show();
+        } else {
+            //lecturer
+            $("#identification-label").text("Lecturer Code");
+            $('#courses-group').hide();
+            $('#modules-group').show();
+        }
+    });
+
+    $('#submit-button').on('click', () => {
+        var username = $('#username-input').val();
+        var password = $('#password-input').val();
+        var confirmPassword = $('#confirm-password-input').val();
+        var firstName = $('#first-name-input').val();
+        var surname = $('#surname-input').val();
+        var userType = $('#user-type-select').val();
+        var identification = $('#identification-input').val();
+        var course = $('#course-select').val();
+        var modules = $('#modules-select').val();
+
+        var formData = new FormData();
+        formData.append("__RequestVerificationToken", $('input[name="__RequestVerificationToken"]').val());
+        formData.append("Username", username);
+        formData.append("Password", password);
+        formData.append("FirstName", firstName);
+        formData.append("Surname", surname);
+        formData.append("UserType", userType);
+        formData.append("UniversityIdentification", identification);
+        formData.append("confirmPassword", confirmPassword);
+        formData.append("course", course);
+        formData.append("modules", modules);
+        /*Editing = true used to determine whether an image is required or not because if the user is editing,
+          there will already be an image assigned to the product*/
+        formData.append("Editing", true);
+
+        var validationRequest = new XMLHttpRequest();
+        //Submit for validation
+        validationRequest.open("POST", "/Users/Validate");
+        validationRequest.onreadystatechange = () => {
+            //Valid, so submit to /Products/Create then redirect
+            if (validationRequest.readyState === 4 && validationRequest.status === 200 && validationRequest.response == "OK") {
+                $('#lbl-error').text("");
+                var registerRequest = new XMLHttpRequest();
+                registerRequest.open("POST", "/Users/Register");
+                //When new product has been posted, redirect to index
+                registerRequest.onreadystatechange = () => {
+                    if (validationRequest.readyState === 4 && validationRequest.status === 200 && validationRequest.response == "OK") {
+                        window.location.replace("/Home/Index");
+                    }
+                }
+                registerRequest.send(formData);
+            }
+            //Not valid, display validation errors
+            else {
+                $('#lbl-error').text(validationRequest.response);
+            }
+        }
+        //Send validation request
+        validationRequest.send(formData);
+
+    });
+
+</script>
