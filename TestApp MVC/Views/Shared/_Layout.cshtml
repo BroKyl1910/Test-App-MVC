@@ -49,9 +49,16 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="About">Tests</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Results</a></li>
+                @using Microsoft.AspNetCore.Http
+                @inject IHttpContextAccessor HttpContextAccessor
+                @if (HttpContextAccessor.HttpContext.Session.GetString("Username") != null)
+                {
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Tests</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Results</a></li>
+                    <li><a asp-area="" asp-controller="Users" asp-action="Logout">Log Out</a></li>
+                }
+
             </ul>
         </div>
 

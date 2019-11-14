@@ -122,3 +122,13 @@ INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer
 
 SELECT * FROM [Test]
 SELECT * FROM [Question]
+
+INSERT INTO LecturerAssignment VALUES('brookyl1910','PROG6212');
+select * from [user]
+select * from [StudentAssignment]
+select * from [LecturerAssignment]
+
+delete from StudentAssignment where Username = 'brookyl1910'
+delete from [LecturerAssignment] where Username = 'brookyl1910'
+delete from [user] where Username = 'brookyl1910'
+

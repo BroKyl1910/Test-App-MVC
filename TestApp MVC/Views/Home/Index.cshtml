@@ -7,66 +7,48 @@
 <div class="body-content">
     <div class="container">
         <div class="header-wrapper">
-            <h1>Recent Tests</h1>
-            <select id="module-select">
-                <option data-id="1">All Modules</option>
-                <option data-id="1">PROG6212 - Programming 2B</option>
-                <option data-id="1">CLDV6212 - Cloud Development</option>
-                <option data-id="1">OPSC6212 - Open Source Coding (Introduction)</option>
-            </select>
+            <h1>Upcoming Tests</h1>
+            @*@if (ViewBag.Modules.Count > 1)
+                {
+                    <select id="module-select">
+                        <option data-id="0">All Modules</option>
+                        @foreach (TestApp.MVC.Models.Module module in ViewBag.Modules)
+                        {
+                            <option data-id="@module.ModuleId">@module.ModuleName</option>
+                        }
+                    </select>
+                }*@
         </div>
         <div class="tests-wrapper">
             <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="test-container">
-                        <h2 class="test-heading">Test</h2>
-                        <span class="num-submissions">Number of submissions: 8</span>
-                        <div class="submissions-graph">
-                            <span>Graph</span>
-                        </div>
-                       
-                        <a href="#" class="view-test-link">View Test</a>
-                       
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="test-container">
-                        <h2 class="test-heading">Test</h2>
-                        <span class="num-submissions">Number of submissions: 8</span>
-                        <div class="submissions-graph">
-                            <span>Graph</span>
-                        </div>
-                       
-                        <a href="#" class="view-test-link">View Test</a>
-                       
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="test-container">
-                        <h2 class="test-heading">Test</h2>
-                        <span class="num-submissions">Number of submissions: 8</span>
-                        <div class="submissions-graph">
-                            <span>Graph</span>
-                        </div>
-                       
-                        <a href="#" class="view-test-link">View Test</a>
-                       
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="test-container">
-                        <h2 class="test-heading">Test</h2>
-                        <span class="num-submissions">Number of submissions: 8</span>
-                        <div class="submissions-graph">
-                            <span>Graph</span>
-                        </div>
-                       
-                        <a href="#" class="view-test-link">View Test</a>
-                       
-                    </div>
-                </div>
+                @if (ViewBag.Tests.Count > 0)
+                {
+                    @foreach (TestApp.MVC.Models.Test test in ViewBag.Tests)
+                    {
+                        <div class="col-md-4 col-sm-6">
+                            <div class="test-container">
+                                <h2 class="test-heading">@test.Title</h2>
+                                <span class="extra-info">@*Due: @test.DueDate.ToLongDateString()*@</span>
+                                <span class="extra-info">Total submissions: 8</span>
 
-               
+                                <div class="submissions-graph">
+                                    <span>Graph</span>
+                                </div>
+
+                                <a href="#" class="view-test-link">View Test</a>
+
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="test-container">
+                            <h2 class="test-heading no-tests">No Tests</h2>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>

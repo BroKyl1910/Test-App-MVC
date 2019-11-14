@@ -66,6 +66,12 @@ namespace TestApp_MVC.Controllers
             }
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Users");
+        }
+
         // GET: Users/Register
         public IActionResult Register()
         {
@@ -117,6 +123,7 @@ namespace TestApp_MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([Bind("Username,Password,FirstName,Surname,UserType,UniversityIdentification")] User user, string confirmPassword, string[] modules, string course)
         {
+            user.Password = BCrypt.HashPassword(user.Password, BCrypt.GenerateSalt());
             _context.Add(user);
             await _context.SaveChangesAsync();
             if (user.UserType == 0)
@@ -131,7 +138,8 @@ namespace TestApp_MVC.Controllers
             else
             {
                 //Lecturer
-                foreach (string module in modules)
+                // JS sends modules as comma delimited string
+                foreach (string module in modules[0].Split(','))
                 {
                     LecturerAssignment la = new LecturerAssignment();
                     la.ModuleId = module;

@@ -99,7 +99,10 @@ h2 {
   margin-bottom: 30px;
   display: flex;
   flex-direction: column; }
-  .test-container .num-submissions {
+  .test-container .no-tests {
+    align-self: center;
+    justify-self: center; }
+  .test-container .extra-info {
     font-size: 0.9em; }
   .test-container .submissions-graph {
     width: 80%;
