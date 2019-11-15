@@ -129,7 +129,7 @@ h2 {
 
 .test-container {
     width: 100%;
-    height: 250px;
+    /*height: 250px;*/
     padding: 15px;
     background: white;
     border-radius: $border-radius;
@@ -139,8 +139,6 @@ h2 {
     flex-direction: column;
 
     .no-tests{
-        align-self: center;
-        justify-self: center;
     }
 
     .extra-info {
@@ -150,7 +148,7 @@ h2 {
     .submissions-graph {
         width: 80%;
         align-self: center;
-        height: 150px;
+        height: 300px;
         /*background: rgba(0,0,0,0.05);*/
         margin: 10px 0;
         text-align: center;

@@ -58,7 +58,8 @@ CREATE TABLE Test(
 	ModuleID VARCHAR(10) NOT NULL FOREIGN KEY REFERENCES Module(ModuleID),
 	Title VARCHAR(50) NOT NULL,
 	DueDate DateTime NOT NULL,
-	Published BIT Default(1) NOT NULL
+	Published BIT Default(1) NOT NULL,
+	PublishDate DATETIME
 );
 
 -- Question
@@ -90,7 +91,8 @@ CREATE TABLE Result(
 	Username VARCHAR(50) FOREIGN KEY REFERENCES [User](Username),
 	AttemptNumber INTEGER NOT NULL,
 	UserResult INT NOT NULL,
-	ResultPercentage DECIMAL NOT NULL
+	ResultPercentage DECIMAL NOT NULL,
+	ResultDate DATETIME
 );
 
 -- Test Data
@@ -114,11 +116,63 @@ INSERT INTO StudentAssignment VALUES('test123','BCAD2');
 DBCC CHECKIDENT ('[Test]', RESEED, 1);
 DBCC CHECKIDENT ('[Question]', RESEED, 1);
 GO
+
+-- Creating Student Users
+INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
+INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2'); -- DONE
+
+INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
+INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
+
+INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
+INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
+
+INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
+INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
+
+INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
+INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
+
+INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
+INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
+
+select * from [User]
+
+-- Creating Tests
 INSERT [dbo].[Test] ([Username], [ModuleID], [Title], [DueDate]) VALUES (N'BroKyl1910', N'PROG6212', N'Test 1', CAST(0x0000AACB00000000 AS DateTime))
 INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (1, N'Question 1?', N'Yes', N'Ya', N'Yah', 2)
 INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (1, N'Grand Ole Opry', N'Rascal Flatts', N'Brought to you by American Idol', N'God bless ''Murica', 1)
 INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (1, N'What is my name?', N'JC', N'Brett', N'Kyle', 2)
 INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (1, N'How many times have I remade this damn test??', N'3', N'A lot (21 Savage ft. J Cole)', N'Too many', 1)
+
+INSERT [dbo].[Test] ([Username], [ModuleID], [Title], [DueDate], [PublishDate]) VALUES (N'BroKyl1910', N'PROG6212', N'Test 2', '2019-08-17', '2019-07-17')
+SELECT * FROM [Test]
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (2, N'Question 1?', N'Yes', N'Ya', N'Yah', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (2, N'Grand Ole Opry', N'Rascal Flatts', N'Brought to you by American Idol', N'God bless ''Murica', 1)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (2, N'What is my name?', N'JC', N'Brett', N'Kyle', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (2, N'How many times have I remade this damn test??', N'3', N'A lot (21 Savage ft. J Cole)', N'Too many', 1)
+
+INSERT [dbo].[Test] ([Username], [ModuleID], [Title], [DueDate], [PublishDate]) VALUES (N'BroKyl1910', N'PROG6212', N'Test 3', '2019-08-17', '2019-07-17')
+SELECT * FROM [Test]
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (3, N'Question 1?', N'Yes', N'Ya', N'Yah', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (3, N'Grand Ole Opry', N'Rascal Flatts', N'Brought to you by American Idol', N'God bless ''Murica', 1)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (3, N'What is my name?', N'JC', N'Brett', N'Kyle', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (3, N'How many times have I remade this damn test??', N'3', N'A lot (21 Savage ft. J Cole)', N'Too many', 1)
+
+
+INSERT [dbo].[Test] ([Username], [ModuleID], [Title], [DueDate], [PublishDate]) VALUES (N'BroKyl1910', N'PROG6212', N'Test 4', '2019-08-17', '2019-07-17')
+SELECT * FROM [Test]
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (4, N'Question 1?', N'Yes', N'Ya', N'Yah', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (4, N'Grand Ole Opry', N'Rascal Flatts', N'Brought to you by American Idol', N'God bless ''Murica', 1)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (4, N'What is my name?', N'JC', N'Brett', N'Kyle', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (4, N'How many times have I remade this damn test??', N'3', N'A lot (21 Savage ft. J Cole)', N'Too many', 1)
+
+INSERT [dbo].[Test] ([Username], [ModuleID], [Title], [DueDate], [PublishDate]) VALUES (N'BroKyl1910', N'PROG6212', N'Test 5', '2019-08-17', '2019-07-17')
+SELECT * FROM [Test]
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (5, N'Question 1?', N'Yes', N'Ya', N'Yah', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (5, N'Grand Ole Opry', N'Rascal Flatts', N'Brought to you by American Idol', N'God bless ''Murica', 1)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (5, N'What is my name?', N'JC', N'Brett', N'Kyle', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (5, N'How many times have I remade this damn test??', N'3', N'A lot (21 Savage ft. J Cole)', N'Too many', 1)
 
 SELECT * FROM [Test]
 SELECT * FROM [Question]
@@ -131,4 +185,10 @@ select * from [LecturerAssignment]
 delete from StudentAssignment where Username = 'brookyl1910'
 delete from [LecturerAssignment] where Username = 'brookyl1910'
 delete from [user] where Username = 'brookyl1910'
+
+update test set PublishDate = '2019-08-17'
+select * from result
+
+select * from test
+update result set ResultDate = rand(checksum(newid()))*(1+datediff(day, '2019-08-17 00:00:00', '2019-09-17 00:00:00'));
 

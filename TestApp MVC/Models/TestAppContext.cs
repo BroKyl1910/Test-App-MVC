@@ -208,6 +208,9 @@ namespace TestApp.MVC.Models
                     .WithMany(p => p.Result)
                     .HasForeignKey(d => d.Username)
                     .HasConstraintName("FK__Result__Username__5629CD9C");
+
+                entity.Property(e => e.ResultDate).HasColumnName("ResultDate");
+
             });
 
             modelBuilder.Entity<StudentAssignment>(entity =>
@@ -243,6 +246,9 @@ namespace TestApp.MVC.Models
                 entity.Property(e => e.TestId).HasColumnName("TestID");
 
                 entity.Property(e => e.DueDate).HasColumnType("datetime");
+
+                entity.Property(e => e.PublishDate).HasColumnType("datetime");
+
 
                 entity.Property(e => e.ModuleId)
                     .IsRequired()

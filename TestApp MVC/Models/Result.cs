@@ -11,6 +11,7 @@ namespace TestApp.MVC.Models
         public int AttemptNumber { get; set; }
         public int UserResult { get; set; }
         public decimal ResultPercentage { get; set; }
+        public DateTime ResultDate { get; set; }
 
         public Test Test { get; set; }
         public User UsernameNavigation { get; set; }
