@@ -34,7 +34,7 @@ namespace TestApp_MVC.Controllers
             {
                 if(results.Any(r=> r.ResultDate.Date.Equals(currentDate.Date)))
                 {
-                    xDates.Add(currentDate.ToShortDateString());
+                    xDates.Add(currentDate.ToShortDateString().Replace('/', '-'));
                     ySubmissions.Add(results.Count(r => r.ResultDate.Equals(currentDate)));
                 }
 
@@ -45,7 +45,7 @@ namespace TestApp_MVC.Controllers
 
 
             return JsonConvert.SerializeObject(new {
-                numSubmissions=totalSubmissions,
+                totalSubmissions,
                 ySubmissions,
                 xDates
             });

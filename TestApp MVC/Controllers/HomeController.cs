@@ -29,7 +29,7 @@ namespace TestApp_MVC.Controllers
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
 
             var modules = _context.LecturerAssignment.Where(la => la.Username.Equals(user.Username)).Select(la => la.Module).ToList();
-            List<Test> tests = _context.Test.Where(t => t.Username.Equals(user.Username)).OrderBy(t => t.DueDate).OrderByDescending(t => t.DueDate).ThenBy(t => t.Title).Take(6).ToList();
+            List<Test> tests = _context.Test.Where(t => t.Username.Equals(user.Username)).OrderBy(t => t.DueDate).ThenBy(t => t.Title).Take(6).ToList();
 
             ViewBag.Tests = tests;
             return View();

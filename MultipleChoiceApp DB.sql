@@ -121,20 +121,11 @@ GO
 INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
 INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2'); -- DONE
 
-INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
-INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
+INSERT INTO [User] VALUES ('SheeEd1800', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Ed', 'Sheeran', 0, '1800SING');
+INSERT INTO StudentAssignment VALUES('SheeEd1800','BCAD2');
 
-INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
-INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
-
-INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
-INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
-
-INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
-INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
-
-INSERT INTO [User] VALUES ('RedOti1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Otis', 'Redding', 0, '1800DOCK');
-INSERT INTO StudentAssignment VALUES('RedOti1900','BCAD2');
+INSERT INTO [User] VALUES ('JoyVan1800', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Vance', 'Joy', 0, '1800RIPT');
+INSERT INTO StudentAssignment VALUES('JoyVan1800','BCAD2');
 
 select * from [User]
 
@@ -186,9 +177,14 @@ delete from StudentAssignment where Username = 'brookyl1910'
 delete from [LecturerAssignment] where Username = 'brookyl1910'
 delete from [user] where Username = 'brookyl1910'
 
-update test set PublishDate = '2019-08-17'
+update test set DueDate = '2019-09-18' where testID = 1
 select * from result
 
 select * from test
-update result set ResultDate = rand(checksum(newid()))*(1+datediff(day, '2019-08-17 00:00:00', '2019-09-17 00:00:00'));
+select * from result
 
+update result set ResultDate = dateadd(day, rand(checksum(newid()))*(1+datediff(day, '2019-08-17 00:00:00', '2019-09-17 00:00:00')),'2019-08-17 00:00:00')
+where ResultDate is null
+
+update result set ResultDate = '2019-09-06'
+where ResultID = 12
