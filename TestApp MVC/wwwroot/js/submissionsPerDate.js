@@ -21,7 +21,7 @@ for (var id of testIds) {
             data.ySubmissions.unshift('Submissions');
             data.xDates.unshift('x');
 
-            $('#num-submissions_' + id).text('Number of submissions:' + data.totalSubmissions);
+            $('#num-submissions_' + id).text('Number of submissions: ' + data.totalSubmissions);
             var chart = c3.generate({
                 bindto: '#test_' + id,
                 data: {

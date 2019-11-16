@@ -25,21 +25,18 @@
                 {
                     @foreach (TestApp.MVC.Models.Test test in ViewBag.Tests)
                     {
-                        <div class="col-md-6 col-sm-12">
-                            <div class="test-container" data-id="@test.TestId">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="test-container student" data-id="@test.TestId">
                                 <h2 class="test-heading">@test.Title</h2>
+                                <span class="extra-info module-name">@test.Module</span>
                                 <span class="extra-info">Due: @test.DueDate.ToShortDateString()</span>
-                                <span class="extra-info" id="num-submissions_@test.TestId">Total submissions: 0</span>
-
-                                <div class="submissions-graph" id="test_@test.TestId">
+                                <div class="vertical-spacer">
+                                    <a href="/Tests/@test.TestId" class="view-test-link">View Test</a>
                                 </div>
-
-                                <a href="#" class="view-test-link">View Test</a>
 
                             </div>
                         </div>
                     }
-                    <script src="~/js/submissionsPerDate.js"></script>
                 }
                 else
                 {

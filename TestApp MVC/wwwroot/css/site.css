@@ -102,6 +102,8 @@ h2 {
   flex-direction: column; }
   .test-container .extra-info {
     font-size: 0.9em; }
+  .test-container .extra-info.module-name {
+    font-weight: bold; }
   .test-container .submissions-graph {
     width: 80%;
     align-self: center;
@@ -115,6 +117,12 @@ h2 {
     flex-direction: row;
     align-items: center;
     justify-content: center; }
+  .test-container .vertical-spacer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: center;
+    height: 100%; }
   .test-container a.view-test-link {
     margin-top: 10px;
     align-self: flex-end;
@@ -124,7 +132,7 @@ h2 {
       text-decoration: none;
       font-weight: bold; }
 
-.test-container.empty {
+.test-container.empty, .test-container.student {
   height: 250px; }
 
 .container.login-container {

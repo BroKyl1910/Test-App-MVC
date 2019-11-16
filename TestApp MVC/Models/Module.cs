@@ -18,5 +18,10 @@ namespace TestApp.MVC.Models
         public ICollection<LecturerAssignment> LecturerAssignment { get; set; }
         public ICollection<ModuleCourse> ModuleCourse { get; set; }
         public ICollection<Test> Test { get; set; }
+
+        public override string ToString()
+        {
+            return ModuleName;
+        }
     }
 }

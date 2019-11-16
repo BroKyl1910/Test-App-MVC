@@ -48,7 +48,7 @@ namespace TestApp_MVC.Controllers
             //Get list of modules the student does
             List<Course> studentCourses = _context.StudentAssignment.Where(sa=> sa.Username == user.Username).Select(sa => sa.Course).ToList();
             List<Module> studentModules = _context.ModuleCourse.Where(mc => studentCourses.Any(sc => sc.CourseId == mc.CourseId)).Select(mc=> mc.Module).ToList();
-            List<Test> tests = _context.Test.Where(t => studentModules.Any(sm => sm.ModuleId == t.ModuleId)).ToList();
+            List<Test> tests = _context.Test.Where(t => studentModules.Any(sm => sm.ModuleId == t.ModuleId)).OrderBy(t => t.DueDate).ThenBy(t => t.Title).Take(6).ToList();
 
             ViewBag.Tests = tests;
             return View("IndexStudent");
