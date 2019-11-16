@@ -1,53 +1,65 @@
-﻿@model IEnumerable<TestApp.MVC.Models.Test>
-
-@{
-    ViewData["Title"] = "Index";
+﻿@{
+    ViewData["Title"] = "Tests";
 }
 
-<h2>Index</h2>
+<img class="yellow-bg-img" src="~/images/Background.png" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DueDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Module)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UsernameNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DueDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Module.ModuleId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsernameNavigation.Username)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TestId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TestId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TestId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="body-content">
+    <div class="container">
+        <div class="header-wrapper">
+            <h1>Tests</h1>
+            @if (ViewBag.Modules.Count > 1)
+                {
+        <select id="module-select">
+            <option value="-1">All Modules</option>
+            @foreach (TestApp.MVC.Models.Module module in ViewBag.Modules)
+            {
+                @if (ViewBag.SelectedIndex == module.ModuleId)
+                {
+                    <option value="@module.ModuleId" selected>@module.ModuleName</option>
+                }
+                else
+                {
+                    <option value="@module.ModuleId">@module.ModuleName</option>
+                }
+            }
+        </select>
+                }
+        </div>
+        <div class="tests-wrapper">
+            <div class="row">
+                @if (ViewBag.Tests.Count > 0)
+                {
+                    @foreach (TestApp.MVC.Models.Test test in ViewBag.Tests)
+                    {
+                        <div class="col-md-4 col-sm-12">
+                            <div class="test-container student" data-id="@test.TestId">
+                                <h2 class="test-heading">@test.Title</h2>
+                                <span class="extra-info module-name">@test.Module</span>
+                                <span class="extra-info">Due: @test.DueDate.ToShortDateString()</span>
+                                <div class="vertical-spacer">
+                                    <a href="/Tests/@test.TestId" class="view-test-link">View Test</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="test-container empty">
+                            <h2 class="test-heading no-tests">No Tests</h2>
+                        </div>
+                    </div>
+                 } 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#module-select').on('change', () => {
+        window.location.replace('/Tests/Filter?moduleID='+$('#module-select').val());
+    });
+</script>

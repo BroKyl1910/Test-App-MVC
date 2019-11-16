@@ -24,6 +24,12 @@ for (var id of testIds) {
             $('#num-submissions_' + id).text('Number of submissions: ' + data.totalSubmissions);
             var chart = c3.generate({
                 bindto: '#test_' + id,
+                padding: {
+                    top: 30,
+                    right: 30,
+                    bottom: 30,
+                    left: 30,
+                },
                 data: {
                     x: 'x',
                     columns: [

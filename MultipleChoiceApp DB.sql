@@ -165,10 +165,17 @@ INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer
 INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (5, N'What is my name?', N'JC', N'Brett', N'Kyle', 2)
 INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (5, N'How many times have I remade this damn test??', N'3', N'A lot (21 Savage ft. J Cole)', N'Too many', 1)
 
+INSERT [dbo].[Test] ([Username], [ModuleID], [Title], [DueDate], [PublishDate]) VALUES (N'BroKyl1910', N'CLDV6212', N'Test 1', '2019-08-17', '2019-07-17')
+SELECT * FROM [Test]
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (6, N'Question 1?', N'Yes', N'Ya', N'Yah', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (6, N'Grand Ole Opry', N'Rascal Flatts', N'Brought to you by American Idol', N'God bless ''Murica', 1)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (6, N'What is my name?', N'JC', N'Brett', N'Kyle', 2)
+INSERT [dbo].[Question] ([TestID], [QuestionText], [Answer1], [Answer2], [Answer3], [CorrectAnswer]) VALUES (6, N'How many times have I remade this damn test??', N'3', N'A lot (21 Savage ft. J Cole)', N'Too many', 1)
+
 SELECT * FROM [Test]
 SELECT * FROM [Question]
 
-INSERT INTO LecturerAssignment VALUES('brookyl1910','PROG6212');
+INSERT INTO LecturerAssignment VALUES('brokyl1910','CLDV6212');
 select * from [user]
 select * from [StudentAssignment]
 select * from [LecturerAssignment]
@@ -188,3 +195,10 @@ where ResultDate is null
 
 update result set ResultDate = '2019-09-06'
 where ResultID = 12
+
+select * from StudentAssignment join Course
+on StudentAssignment.CourseID = Course.CourseID
+
+select * from test
+
+update test set published = 1 where TestID = 4

@@ -63,8 +63,8 @@
                 @if (HttpContextAccessor.HttpContext.Session.GetString("Username") != null)
                 {
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">Tests</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Results</a></li>
+                    <li><a asp-area="" asp-controller="Tests" asp-action="Index">Tests</a></li>
+                    <li><a asp-area="" asp-controller="Results" asp-action="Index">Results</a></li>
                     <li><a asp-area="" asp-controller="Users" asp-action="Logout">Log Out</a></li>
                 }
 

@@ -18,6 +18,7 @@ namespace TestApp.MVC.Models
         public string Title { get; set; }
         public DateTime DueDate { get; set; }
         public DateTime PublishDate { get; set; }
+        public bool Published { get; set; }
 
         public Module Module { get; set; }
         public User UsernameNavigation { get; set; }

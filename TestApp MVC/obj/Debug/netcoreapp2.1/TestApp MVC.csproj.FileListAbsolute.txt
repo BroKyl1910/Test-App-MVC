@@ -67,10 +67,6 @@ E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\View
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Create.cshtml.g.cs
-E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Delete.cshtml.g.cs
-E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Details.cshtml.g.cs
-E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Edit.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Index.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Login.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Register.cshtml.g.cs

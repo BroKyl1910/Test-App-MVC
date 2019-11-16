@@ -249,6 +249,8 @@ namespace TestApp.MVC.Models
 
                 entity.Property(e => e.PublishDate).HasColumnType("datetime");
 
+                entity.Property(e => e.Published).HasColumnType("bool");
+
 
                 entity.Property(e => e.ModuleId)
                     .IsRequired()
