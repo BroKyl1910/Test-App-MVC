@@ -50,6 +50,7 @@ namespace TestApp_MVC.Controllers
 
             HttpContext.Session.SetString("Username", user.Username);
             HttpContext.Session.SetInt32("UserType", user.UserType);
+
             return RedirectToAction("Index", "Home");
         }
 

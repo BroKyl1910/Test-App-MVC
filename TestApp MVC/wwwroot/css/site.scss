@@ -28,6 +28,7 @@ $inverted-box-shadow: -3px 3px 3px rgba(0,0,0,0.2);
 .yellow-bg-img {
     z-index: -5;
     position: absolute;
+    max-width: 100%;
 }
 
 body {
@@ -172,6 +173,10 @@ h2 {
             font-weight: bold;
         }
     }
+}
+
+.test-container.empty {
+    height: 250px;
 }
 
 .container.login-container {

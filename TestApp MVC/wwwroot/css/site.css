@@ -14,7 +14,8 @@
 
 .yellow-bg-img {
   z-index: -5;
-  position: absolute; }
+  position: absolute;
+  max-width: 100%; }
 
 body {
   padding-top: 50px;
@@ -122,6 +123,9 @@ h2 {
     .test-container a.view-test-link:hover {
       text-decoration: none;
       font-weight: bold; }
+
+.test-container.empty {
+  height: 250px; }
 
 .container.login-container {
   border-radius: 20px;
