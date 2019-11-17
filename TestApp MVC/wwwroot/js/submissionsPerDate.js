@@ -14,6 +14,10 @@ for (var id of testIds) {
         async: false,
         success: (data) => {
             data = JSON.parse(data);
+            if (data.ySubmissions.length == 0) {
+                $('#test_' + id).css('visibility', 'hidden');
+                return;
+            }
 
             var xTickValues = data.xDates.slice();
             var yTickValues = data.ySubmissions.slice();

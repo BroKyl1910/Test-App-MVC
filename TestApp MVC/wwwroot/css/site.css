@@ -43,6 +43,18 @@ h2 {
     background: #ffcd1e;
     font-weight: bold; }
 
+.default-flat-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none; }
+  .default-flat-button:hover {
+    /*background: darken($primary-yellow, $darken-perc);*/
+    font-weight: bold;
+    text-decoration: none; }
+
 .sub-text {
   font-size: 0.8em;
   color: #4d4d4d; }
@@ -199,6 +211,35 @@ h2 {
     .container.register-container .row a:hover {
       font-weight: bold;
       text-decoration: none; }
+
+ul.test-ul {
+  max-height: 505px;
+  overflow: auto;
+  padding-right: 15px;
+  padding-top: 5px;
+  width: 70%;
+  /*margin: 0 auto;*/ }
+  ul.test-ul li.test-li {
+    list-style: none; }
+    ul.test-ul li.test-li .test-container {
+      margin-bottom: 10px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); }
+      ul.test-ul li.test-li .test-container .row {
+        display: flex;
+        flex-direction: row; }
+        ul.test-ul li.test-li .test-container .row .left-side {
+          display: flex;
+          flex-direction: column; }
+        ul.test-ul li.test-li .test-container .row .right-side {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-end; }
+          ul.test-ul li.test-li .test-container .row .right-side .default-yellow-button {
+            width: fit-content;
+            color: #333333; }
+            ul.test-ul li.test-li .test-container .row .right-side .default-yellow-button:hover {
+              text-decoration: none; }
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

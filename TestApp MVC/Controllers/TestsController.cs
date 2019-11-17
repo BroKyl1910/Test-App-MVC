@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TestApp.MVC.Models;
+using TestApp.MVC.ViewModels;
 
 namespace TestApp_MVC.Controllers
 {
@@ -20,7 +21,7 @@ namespace TestApp_MVC.Controllers
         }
 
         // GET: Tests
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string moduleID)
         {
             if (HttpContext.Session.GetString("Username") == null)
             {
@@ -28,50 +29,54 @@ namespace TestApp_MVC.Controllers
             }
 
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
-            //if (user.UserType == 0)
-            //{
-            //    //Student
-            //}
-            ////Lecturer
-            var modules = _context.LecturerAssignment.Where(la => la.Username.Equals(user.Username)).Select(la => la.Module).ToList();
-            List<Test> tests = _context.Test.Where(t => t.Username.Equals(user.Username)).OrderBy(t => t.DueDate).ThenBy(t => t.Title).Take(6).ToList();
-
-            ViewBag.Modules = modules;
-            ViewBag.Tests = tests;
-
-            return View();
-        }
-
-        public async Task<IActionResult> Filter(string moduleID)
-        {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Users");
-            }
-
-            User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
-            //if (user.UserType == 0)
-            //{
-            //    //Student
-            //}
-            ////Lecturer
-            var modules = _context.LecturerAssignment.Where(la => la.Username.Equals(user.Username)).Select(la => la.Module).ToList();
+            List<Module> allModules = new List<Module>();
             List<Test> tests = new List<Test>();
-            if (moduleID == "-1")
+            bool isLectuer = user.UserType == 1;
+            bool specifiedModule = false;
+            if (!isLectuer)
             {
-                tests = _context.Test.Where(t => t.Username.Equals(user.Username)).OrderBy(t => t.DueDate).ThenBy(t => t.Title).Take(6).ToList();
+                //Student
+                List<StudentTestsViewModel> viewModels = new List<StudentTestsViewModel>();
+                allModules = _context.ModuleCourse.Where(mc => mc.CourseId == _context.StudentAssignment.First(sa => sa.Username == user.Username).CourseId).Select(mc => mc.Module).ToList();
+                List<Module> modules = new List<Module>();
+                if (moduleID != null && moduleID != "-1")
+                {
+                    //Filter modules based on parameter
+                    modules = allModules.Where(m => m.ModuleId == moduleID).ToList();
+                    specifiedModule = true;
+                }
+                else
+                {
+                    modules = allModules;
+                }
+                tests = _context.Test.Where(t => modules.Any(m => m.ModuleId == t.ModuleId)).OrderBy(t => t.DueDate).ThenBy(t => t.Title).ToList();
             }
             else
             {
-                tests = _context.Test.Where(t => t.Username.Equals(user.Username) && t.ModuleId == moduleID).OrderBy(t => t.DueDate).ThenBy(t => t.Title).Take(6).ToList();
+                //Lecturer
+                allModules = _context.LecturerAssignment.Where(la => la.Username == user.Username).Select(la => la.Module).ToList();
+                List<Module> modules = new List<Module>();
+                if (moduleID != null && moduleID != "-1")
+                {
+                    modules = allModules.Where(m => m.ModuleId == moduleID).ToList();
+                    specifiedModule = true;
+                }
+                else
+                {
+                    modules = allModules;
+                }
+                // Show tests for specified module and that were created by logged in lecturer
+                tests = _context.Test.Where(t => modules.Any(m => m.ModuleId == t.ModuleId) && t.Username == user.Username).ToList();
+
             }
 
             ViewBag.SelectedIndex = moduleID;
-            ViewBag.Modules = modules;
+            ViewBag.Modules = allModules;
             ViewBag.Tests = tests;
 
-            return View("Index");
+            return (isLectuer) ? View("IndexLecturer") : View("IndexStudent");
         }
+
 
 
         // GET: Tests/Details/5

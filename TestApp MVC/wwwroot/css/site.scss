@@ -7,6 +7,7 @@ $border-radius-big: 20px;
 $border-radius-small: 5px;
 $main-box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
 $inverted-box-shadow: -3px 3px 3px rgba(0,0,0,0.2);
+$straight-down-box-shadow: 0 0 5px rgba(0,0,0,0.4);
 
 * {
     font-family: 'Roboto', sans-serif;
@@ -64,7 +65,22 @@ h2 {
     }
 }
 
-.sub-text{
+.default-flat-button {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+        /*background: darken($primary-yellow, $darken-perc);*/
+        font-weight: bold;
+        text-decoration:none;
+    }
+}
+
+.sub-text {
     font-size: 0.8em;
     color: lighten($primary-gray, $darken-perc);
 }
@@ -121,7 +137,6 @@ h2 {
             font-weight: bold;
         }
     }
-
 }
 
 .tests-wrapper {
@@ -147,7 +162,7 @@ h2 {
         font-size: 0.9em;
     }
 
-    .extra-info.module-name{
+    .extra-info.module-name {
         font-weight: bold;
     }
 
@@ -265,9 +280,9 @@ h2 {
             width: 90%;
             margin: 30px auto;
 
-            .scrollable{
+            .scrollable {
                 max-height: 370px;
-                overflow:auto;
+                overflow: auto;
                 padding-right: 15px;
             }
 
@@ -275,7 +290,7 @@ h2 {
                 margin-left: 0;
             }
 
-            #lbl-error{
+            #lbl-error {
                 margin-top: 30px;
             }
         }
@@ -287,6 +302,50 @@ h2 {
             &:hover {
                 font-weight: bold;
                 text-decoration: none;
+            }
+        }
+    }
+}
+
+ul.test-ul {
+    max-height: 505px;
+    overflow: auto;
+    padding-right: 15px;
+    padding-top: 5px;
+    width: 70%;
+    /*margin: 0 auto;*/
+
+    li.test-li {
+        list-style: none;
+
+        .test-container {
+            margin-bottom: 10px;
+            box-shadow: $straight-down-box-shadow;
+
+            .row {
+                display: flex;
+                flex-direction: row;
+
+                .left-side {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .right-side {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-end;
+
+                    .default-yellow-button {
+                        width: fit-content;
+                        color: $primary-gray;
+
+                        &:hover{
+                            text-decoration: none;
+                        }
+                    }
+                }
             }
         }
     }

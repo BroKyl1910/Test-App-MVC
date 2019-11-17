@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Tests";
+}
+
+<img class="yellow-bg-img" src="~/images/Background.png" />
+
+<div class="body-content">
+    <div class="container">
+        <div class="header-wrapper">
+            <h1>Tests</h1>
+
+            @* If Index is null and only one module, don't show combobox *@
+            @if (ViewBag.Modules.Count > 1)
+            {
+                <select id="module-select">
+                    <option value="-1">All Modules</option>
+                    @foreach (TestApp.MVC.Models.Module module in ViewBag.Modules)
+                    {
+                        @if (ViewBag.SelectedIndex == module.ModuleId)
+                        {
+                            <option value="@module.ModuleId" selected>@module.ModuleName</option>
+                        }
+                        else
+                        {
+                            <option value="@module.ModuleId">@module.ModuleName</option>
+                        }
+                    }
+                </select>
+            }
+        </div>
+        <div class="tests-wrapper">
+            <div class="row">
+                @if (ViewBag.Tests.Count > 0)
+                {
+                    <ul class="test-ul">
+
+                        @foreach (TestApp.MVC.Models.Test test in ViewBag.Tests)
+                        {
+                            <li class="test-li">
+                                <div class="test-container" data-id="@test.TestId">
+                                    <div class="row">
+                                        <div class="col-lg-8 left-side">
+                                            <h2 class="test-heading">@test.Title</h2>
+                                            <span class="extra-info module-name">@test.Module</span>
+                                            <span class="extra-info">Due: @test.DueDate.ToShortDateString()</span>
+                                        </div>
+                                        <div class="col-lg-4 right-side">
+                                            <a href="/Tests/@test.TestId" class="default-yellow-button">View Test</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                        }
+                    </ul>
+
+                }
+                else
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="test-container empty">
+                            <h2 class="test-heading no-tests">No Tests</h2>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#module-select').on('change', () => {
+        window.location.replace('/Tests/Index?moduleID=' + $('#module-select').val());
+    });
+</script>

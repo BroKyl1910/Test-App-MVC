@@ -67,7 +67,6 @@ E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\View
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Index.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Login.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Register.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
@@ -80,3 +79,5 @@ E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MV
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.csproj.CopyComplete
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexLecturer.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexStudent.cshtml.g.cs
+E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\IndexLecturer.cshtml.g.cs
+E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\IndexStudent.cshtml.g.cs
