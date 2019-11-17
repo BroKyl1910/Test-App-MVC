@@ -75,11 +75,11 @@ function validateQuestion() {
 function saveQuestion() {
     if (validateQuestion()) {
         var question = {
-            questionText: $(questionTextInput).val(),
-            correctAnswer: parseInt($('input[name=correct-answer-radio]:checked').val()),
-            answerA: $(aInput).val(),
-            answerB: $(bInput).val(),
-            answerC: $(cInput).val()
+            QuestionText: $(questionTextInput).val(),
+            CorrectAnswer: parseInt($('input[name=correct-answer-radio]:checked').val()),
+            Answer1: $(aInput).val(),
+            Answer2: $(bInput).val(),
+            Answer3: $(cInput).val()
         };
 
         questions[questionIndex] = question;
@@ -93,13 +93,26 @@ function saveQuestion() {
 function saveTest() {
     if (validTest()) {
         var test = {
-            title: $(testTitleInput).val(),
-            moduleID: $(testModuleSelect).val(),
-            dueDate: $(testDueDateSelect).val(),
-            questions: questions
+            Title: $(testTitleInput).val(),
+            ModuleID: $(testModuleSelect).val(),
+            DueDate: $(testDueDateSelect).val(),
+            Question: questions
         }
+
         console.log(test);
         console.log("Saving Test");
+
+        $.ajax({
+            url: '/Tests/Create',
+            method: 'POST',
+            data: {
+                test: test
+            },
+            success: () => {
+                window.location.replace('/Tests/Index');
+            }
+
+        });
     }
 }
 

@@ -126,12 +126,31 @@ namespace TestApp_MVC.Controllers
 
         // POST: Tests/Create
         [HttpPost]
-        public async Task<IActionResult> Create(string stuff)
+        public async Task<IActionResult> Create(Test test)
         {
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
-            var modules = _context.LecturerAssignment.Where(la => la.Username == user.Username).Select(la => la.Module).ToList();
+            Test dbTest = new Test()
+            {
+                Username = user.Username,
+                ModuleId = test.ModuleId,
+                Title = test.Title,
+                DueDate = test.DueDate,
+                PublishDate = DateTime.Now.Date,
+                Published = true
+            };
 
-            ViewBag.Modules = modules;
+            _context.Test.Add(dbTest);
+            _context.SaveChanges();
+
+            List<Question> questions = test.Question.ToList();
+            foreach(Question question in questions)
+            {
+                question.TestId = dbTest.TestId;
+                _context.Question.Add(question);
+            }
+
+            _context.SaveChanges();
+
             return View();
         }
 
