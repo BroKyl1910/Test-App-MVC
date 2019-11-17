@@ -20,8 +20,8 @@ var bRadio = $('.b-radio');
 var bInput = $('.b-input');
 var cRadio = $('.c-radio');
 var cInput = $('.c-input');
-var newQuestionButton = $('.new-question-button');
-var saveTestButton = $('.save-test-button');
+var nextQuestionButton = $('.new-question-button');
+var finishTestButton = $('.save-test-button');
 
 // Variables to store and control creation of questions
 var testTitle;
@@ -31,20 +31,20 @@ var questions = [];
 var questionIndex = 0;
 
 // Store all questions in memory then when save test is clicked, send test to server
-$(newQuestionButton).on('click', () => {
-    if (saveQuestion()) {
+$(nextQuestionButton).on('click', () => {
+    if (saveAnswer()) {
         questionIndex++;
         clearQuestion();
     }
 });
 
-$(saveTestButton).on('click', () => {
+$(finishTestButton).on('click', () => {
     //If current question is blank, just save previous questions in case user doesn't fully understand UI
     if (questionEmpty()) {
         saveTest();
     } else {
         //Question not empty so validate question then save all questions as test
-        saveQuestion();
+        saveAnswer();
         saveTest();
     }
 
@@ -72,7 +72,7 @@ function validateQuestion() {
     return true;
 }
 
-function saveQuestion() {
+function saveAnswer() {
     if (validateQuestion()) {
         var question = {
             QuestionText: $(questionTextInput).val(),

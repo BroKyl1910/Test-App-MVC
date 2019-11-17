@@ -48,7 +48,7 @@ namespace TestApp_MVC.Controllers
                 {
                     modules = allModules;
                 }
-                tests = _context.Test.Where(t => modules.Any(m => m.ModuleId == t.ModuleId)).OrderBy(t => t.DueDate).ThenBy(t => t.Title).ToList();
+                tests = _context.Test.Where(t => modules.Any(m => m.ModuleId == t.ModuleId) && t.Published==true).OrderBy(t => t.DueDate).ThenBy(t => t.Title).ToList();
                 viewModels = tests.Select(t => new StudentTestsViewModel()
                 {
                     Test = t,
@@ -69,7 +69,7 @@ namespace TestApp_MVC.Controllers
                     modules = allModules;
                 }
                 // Show tests for specified module and that were created by logged in lecturer
-                tests = _context.Test.Where(t => modules.Any(m => m.ModuleId == t.ModuleId) && t.Username == user.Username).ToList();
+                tests = _context.Test.Where(t => modules.Any(m => m.ModuleId == t.ModuleId) && t.Username == user.Username).OrderByDescending(t => t.DueDate).ThenBy(t => t.Title).ToList();
 
             }
 
@@ -152,6 +152,80 @@ namespace TestApp_MVC.Controllers
             _context.SaveChanges();
 
             return View();
+        }
+
+        // GET: Tests/Take
+        public async Task<IActionResult> Take(int testID)
+        {
+            User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
+            Test test = _context.Test.First(t => t.TestId == testID);
+
+            ViewBag.TestID = test.TestId;
+            ViewBag.TestTitle = test.Title;
+            ViewBag.Module = _context.Module.First(m=> m.ModuleId == test.ModuleId);
+            ViewBag.DueDate = test.DueDate.ToShortDateString();
+            return View();
+        }
+
+        // GET: Tests/Questions
+        public List<Question> Questions(int testID)
+        {
+            List<Question> questions = _context.Question.Where(q => q.TestId == testID).ToList();
+            return questions;
+        }
+
+        // POST: Tests/Take
+        [HttpPost]
+        public ActionResult Take(int testID, List<Int32> answers)
+        {
+            User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
+            Test test = _context.Test.First(t => t.TestId == testID);
+            List<Question> questions = _context.Question.Where(q => q.TestId == testID).ToList();
+
+            List<Answer> dbAnswers = new List<Answer>();
+
+            int attemptNumber = 1;
+
+            for (int i = 0; i < questions.Count; i++)
+            {
+                Answer answer = new Answer();
+                answer.AttemptNumber = attemptNumber;
+                answer.QuestionId = questions[i].QuestionId;
+                answer.Username = user.Username;
+                answer.TestId = test.TestId;
+                answer.UserAnswer = answers[i];
+                answer.Correct = answers[i] == questions[i].CorrectAnswer;
+
+                _context.Answer.Add(answer);
+            }
+
+            _context.SaveChanges();
+
+            // Calculate and save result
+            int numCorrect = _context.Answer.Count(a => a.TestId == test.TestId && a.Username.Equals(user.Username) && a.AttemptNumber == attemptNumber && a.Correct);
+
+            Result result = new Result();
+            result.TestId = test.TestId;
+            result.Username = user.Username;
+            result.AttemptNumber = attemptNumber;
+            result.UserResult = numCorrect;
+            result.ResultPercentage = (decimal)Math.Round(((double)numCorrect) / questions.Count * 100, 3);
+            result.ResultDate = DateTime.Now.Date;
+            _context.Result.Add(result);
+
+            
+            _context.SaveChanges();
+
+            return View();
+        }
+
+        // PUT: Tests/Publish
+        [HttpPut]
+        public void Publish(int testID, bool published)
+        {
+            Test test = _context.Test.First(t => t.TestId == testID);
+            test.Published = published;
+            _context.SaveChanges();
         }
 
         private bool TestExists(int id)

@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Take";
+}
+
+<img class="yellow-bg-img" src="~/images/Background.png" />
+
+<div class="body-content">
+    <div class="container">
+        <div class="header-wrapper">
+            <h1>Take Test</h1>
+        </div>
+        <div class="create-test-container">
+            <input type="hidden" id="testID" value="@ViewBag.TestID"/>
+            <h2 class="test-title-text">@ViewBag.TestTitle</h2>
+            <div class="test-details column">
+                <span class="test-module-text extra-info">@ViewBag.Module</span>
+                <span class="test-due-date-text extra-info">Due @ViewBag.DueDate</span>
+            </div>
+
+            <div class="question-container">
+                <h2 class="question-heading">Question 1</h2>
+                <span class="question-text">Question text goes here</span>
+                <h3>Answers</h3>
+                <div class="answers-wrapper">
+                    <div class="answer-container">
+                        <div class="radio-label-group">
+                            <input type="radio" class="a-radio" checked="checked" name="correct-answer-radio" value="0" />
+                            <span>A.</span>
+                        </div>
+                        <span class="answer-text a-text">Answer A</span>
+                    </div>
+                    <div class="answer-container">
+                        <div class="radio-label-group">
+                            <input type="radio" class="b-radio" name="correct-answer-radio" value="1" />
+                            <span>B.</span>
+                        </div>
+                        <span class="answer-text b-text">Answer B</span>
+                    </div>
+                    <div class="answer-container">
+                        <div class="radio-label-group">
+                            <input type="radio" class="c-radio" name="correct-answer-radio" value="2" />
+                            <span>C.</span>
+                        </div>
+                        <span class="answer-text c-text">Answer C</span>
+                    </div>
+                </div>
+                <span class="text-danger error-message question-error"></span>
+                <button class="default-yellow-button next-question-button">Next Question</button>
+            </div>
+
+            <span class="text-danger error-message test-error"></span>
+            <button class="default-yellow-button finish-test-button">Finish Test</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/takeTest.js"></script>
+

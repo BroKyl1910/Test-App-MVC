@@ -45,6 +45,18 @@
                                             <span class="extra-info">Due: @test.DueDate.ToShortDateString()</span>
                                         </div>
                                         <div class="col-lg-4 right-side">
+                                            <div class="published-container">
+                                                @if (test.Published)
+                                                {
+                                                    <input type="checkbox" data-id="@test.TestId" class="checkbox published-checkbox" checked="checked" />
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" data-id="@test.TestId" class="checkbox published-checkbox" />
+
+                                                }
+                                                <span class="published-label">Published</span>
+                                            </div>
                                             <a href="/Tests/@test.TestId" class="default-flat-button">View Test</a>
                                         </div>
                                     </div>
@@ -76,5 +88,19 @@
 <script>
     $('#module-select').on('change', () => {
         window.location.replace('/Tests/Index?moduleID=' + $('#module-select').val());
+    });
+
+    $('.published-checkbox').on('change', (evt) => {
+        var targetCheckbox = $(evt.currentTarget);
+        var testId = $(targetCheckbox).attr('data-id');
+        var published = $(targetCheckbox).prop('checked');
+        $.ajax({
+            url: '/Tests/Publish',
+            method:'PUT',
+            data: {
+                testId,
+                published
+            }
+        });
     });
 </script>

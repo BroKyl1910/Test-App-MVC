@@ -11,7 +11,6 @@ F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MV
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.TagHelpers.input.cache
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.TagHelpers.output.cache
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.RazorCoreGenerate.cache
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
@@ -30,10 +29,6 @@ F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MV
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Login.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Users\Register.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Create.g.cshtml.cs
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Delete.g.cshtml.cs
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Details.g.cshtml.cs
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Edit.g.cshtml.cs
-F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Index.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Graphs\Create.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Graphs\Delete.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Graphs\Details.g.cshtml.cs
@@ -82,3 +77,9 @@ E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\View
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\IndexLecturer.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\IndexStudent.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Create.cshtml.g.cs
+E:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Take.cshtml.g.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexLecturer.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Home\IndexStudent.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\IndexLecturer.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\IndexStudent.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestApp MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Take.g.cshtml.cs

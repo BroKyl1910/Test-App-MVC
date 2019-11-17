@@ -46,11 +46,11 @@
                                             @if (viewModel.HasTaken)
                                             {
                                                 <span class="completed-text">- Completed</span>
-                                                <a href="/Tests/@viewModel.Test.TestId" class="default-flat-button">View Result</a>
+                                                <a href="/Tests/Take/@viewModel.Test.TestId" class="default-flat-button">View Result</a>
                                             }
                                             else
                                             {
-                                                <a href="/Tests/@viewModel.Test.TestId" class="default-yellow-button">Take Test</a>
+                                                <a href="/Tests/Take?testID=@viewModel.Test.TestId" class="default-yellow-button">Take Test</a>
                                             }
                                         </div>
                                     </div>
