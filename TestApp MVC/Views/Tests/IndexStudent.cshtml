@@ -32,19 +32,26 @@
                 {
                     <ul class="test-ul">
 
-                        @foreach (TestApp.MVC.Models.Test test in ViewBag.Tests)
+                        @foreach (TestApp.MVC.ViewModels.StudentTestsViewModel viewModel in ViewBag.StudentTestsViewModels)
                         {
                             <li class="test-li">
-                                <div class="test-container" data-id="@test.TestId">
+                                <div class="test-container" data-id="@viewModel.Test.TestId">
                                     <div class="row">
                                         <div class="col-lg-8 left-side">
-                                            <h2 class="test-heading">@test.Title</h2>
-                                            <span class="extra-info module-name">@test.Module</span>
-                                            <span class="extra-info">Due: @test.DueDate.ToShortDateString()</span>
+                                            <h2 class="test-heading">@viewModel.Test.Title</h2>
+                                            <span class="extra-info module-name">@viewModel.Test.Module</span>
+                                            <span class="extra-info">Due: @viewModel.Test.DueDate.ToShortDateString()</span>
                                         </div>
                                         <div class="col-lg-4 right-side">
-                                            @*<a href="/Tests/@test.TestId" class="default-yellow-button">Take Test</a>*@
-                                            <a href="/Tests/@test.TestId" class="default-flat-button">View Memo</a>
+                                            @if (viewModel.HasTaken)
+                                            {
+                                                <span class="completed-text">- Completed</span>
+                                                <a href="/Tests/@viewModel.Test.TestId" class="default-flat-button">View Result</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Tests/@viewModel.Test.TestId" class="default-yellow-button">Take Test</a>
+                                            }
                                         </div>
                                     </div>
 

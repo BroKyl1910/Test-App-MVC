@@ -8,7 +8,7 @@ namespace TestApp.MVC.ViewModels
 {
     public class StudentTestsViewModel
     {
-        Test Test;
-        bool HasTaken;
+        public Test Test { get; set; }
+        public  bool HasTaken { get; set; }
     }
 }

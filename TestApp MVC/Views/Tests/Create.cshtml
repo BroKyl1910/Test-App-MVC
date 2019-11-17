@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Create Test";
+}
+
+<img class="yellow-bg-img" src="~/images/Background.png" />
+
+<div class="body-content">
+    <div class="container">
+        <div class="header-wrapper">
+            <h1>Create Test</h1>
+        </div>
+        <div class="create-test-container">
+            <h2>Test Details</h2>
+            <div class="test-details">
+                <input type="text" placeholder="Title" name="name" value="" class="form-control test-title-input" />
+                <select name="name" value="" class="form-control test-module-select">
+                    <option value="-1">Module</option>
+                    @foreach (TestApp.MVC.Models.Module module in ViewBag.Modules)
+                    {
+                        @if (ViewBag.SelectedIndex == module.ModuleId)
+                        {
+                            <option value="@module.ModuleId" selected>@module.ModuleName</option>
+                        }
+                        else
+                        {
+                            <option value="@module.ModuleId">@module.ModuleName</option>
+                        }
+                    }
+                </select>
+                <input type="date" name="name" value="" class="form-control test-due-date-select" />
+            </div>
+
+            <div class="question-container">
+                <h2 class="question-heading">Question 1</h2>
+                <input type="text" name="name" value="" placeholder="Type question here..." class="form-control question-text-input" />
+                <h3>Correct Answer</h3>
+                <div class="answers-wrapper">
+                    <div class="answer-container">
+                        <div class="radio-label-group">
+                            <input type="radio" class="a-radio" checked="checked" name="correct-answer-radio" value="0" />
+                            <span>A.</span>
+                        </div>
+                        <input type="text" class="form-control answer-text a-input" />
+                    </div>
+                    <div class="answer-container">
+                        <div class="radio-label-group">
+                            <input type="radio" class="b-radio" name="correct-answer-radio" value="1" />
+                            <span>B.</span>
+                        </div>
+                        <input type="text" class="form-control answer-text b-input" />
+                    </div>
+                    <div class="answer-container">
+                        <div class="radio-label-group">
+                            <input type="radio" class="c-radio" name="correct-answer-radio" value="2" />
+                            <span>C.</span>
+                        </div>
+                        <input type="text" class="form-control answer-text c-input" />
+                    </div>
+                </div>
+                <span class="text-danger error-message question-error"></span>
+                <button class="default-yellow-button new-question-button">New Question</button>
+            </div>
+
+            <span class="text-danger error-message test-error"></span>
+            <button class="default-yellow-button save-test-button">Save Test</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/createTest.js"></script>

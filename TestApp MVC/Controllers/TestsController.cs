@@ -31,25 +31,29 @@ namespace TestApp_MVC.Controllers
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
             List<Module> allModules = new List<Module>();
             List<Test> tests = new List<Test>();
+            List<StudentTestsViewModel> viewModels = new List<StudentTestsViewModel>();
             bool isLectuer = user.UserType == 1;
-            bool specifiedModule = false;
+            
             if (!isLectuer)
             {
                 //Student
-                List<StudentTestsViewModel> viewModels = new List<StudentTestsViewModel>();
                 allModules = _context.ModuleCourse.Where(mc => mc.CourseId == _context.StudentAssignment.First(sa => sa.Username == user.Username).CourseId).Select(mc => mc.Module).ToList();
                 List<Module> modules = new List<Module>();
                 if (moduleID != null && moduleID != "-1")
                 {
                     //Filter modules based on parameter
                     modules = allModules.Where(m => m.ModuleId == moduleID).ToList();
-                    specifiedModule = true;
                 }
                 else
                 {
                     modules = allModules;
                 }
                 tests = _context.Test.Where(t => modules.Any(m => m.ModuleId == t.ModuleId)).OrderBy(t => t.DueDate).ThenBy(t => t.Title).ToList();
+                viewModels = tests.Select(t => new StudentTestsViewModel()
+                {
+                    Test = t,
+                    HasTaken = _context.Result.Any(r => r.Username == user.Username && r.TestId == t.TestId)
+                }).ToList();
             }
             else
             {
@@ -59,7 +63,6 @@ namespace TestApp_MVC.Controllers
                 if (moduleID != null && moduleID != "-1")
                 {
                     modules = allModules.Where(m => m.ModuleId == moduleID).ToList();
-                    specifiedModule = true;
                 }
                 else
                 {
@@ -73,6 +76,7 @@ namespace TestApp_MVC.Controllers
             ViewBag.SelectedIndex = moduleID;
             ViewBag.Modules = allModules;
             ViewBag.Tests = tests;
+            ViewBag.StudentTestsViewModels = viewModels;
 
             return (isLectuer) ? View("IndexLecturer") : View("IndexStudent");
         }
@@ -97,6 +101,38 @@ namespace TestApp_MVC.Controllers
             }
 
             return View(test);
+        }
+
+        // GET: Tests/Create
+        public async Task<IActionResult> Create()
+        {
+            if (HttpContext.Session.GetString("Username") == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
+
+            if(HttpContext.Session.GetInt32("UserType") != 1)
+            {
+                //Unauthorized
+                return RedirectToAction("Index", "Tests");
+            }
+
+            User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
+            var modules = _context.LecturerAssignment.Where(la => la.Username == user.Username).Select(la => la.Module).ToList();
+
+            ViewBag.Modules = modules;
+            return View();
+        }
+
+        // POST: Tests/Create
+        [HttpPost]
+        public async Task<IActionResult> Create(string stuff)
+        {
+            User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
+            var modules = _context.LecturerAssignment.Where(la => la.Username == user.Username).Select(la => la.Module).ToList();
+
+            ViewBag.Modules = modules;
+            return View();
         }
 
         private bool TestExists(int id)
