@@ -45,9 +45,12 @@ function displayQuestion() {
         $(nextQuestionButton).css('visibility', 'hidden');
         if (questions.length == 1) {
             $(prevQuestionButton).css('visibility', 'hidden');
+        } else {
+            $(prevQuestionButton).css('visibility', 'visible');
         }
     } else if (questionIndex == 0) {
         $(prevQuestionButton).css('visibility', 'hidden');
+        $(nextQuestionButton).css('visibility', 'visible');
     } else {
         $(nextQuestionButton).css('visibility', 'visible');
         $(prevQuestionButton).css('visibility', 'visible');

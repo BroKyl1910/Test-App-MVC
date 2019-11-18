@@ -75,14 +75,16 @@ function displayQuestion() {
         $(correctOutput).text('Correct Answer: ' + letters[question.correctAnswer]);
     }
 
-    //Display prev/next
     if (questionIndex == questions.length - 1) {
         $(nextQuestionButton).css('visibility', 'hidden');
         if (questions.length == 1) {
             $(prevQuestionButton).css('visibility', 'hidden');
+        } else {
+            $(prevQuestionButton).css('visibility', 'visible');
         }
     } else if (questionIndex == 0) {
         $(prevQuestionButton).css('visibility', 'hidden');
+        $(nextQuestionButton).css('visibility', 'visible');
     } else {
         $(nextQuestionButton).css('visibility', 'visible');
         $(prevQuestionButton).css('visibility', 'visible');

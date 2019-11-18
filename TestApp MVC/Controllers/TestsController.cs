@@ -54,7 +54,7 @@ namespace TestApp_MVC.Controllers
                 {
                     Test = t,
                     HasTaken = _context.Result.Any(r => r.Username == user.Username && r.TestId == t.TestId)
-                }).ToList();
+                }).OrderBy(vm=>vm.HasTaken).ToList();
             }
             else
             {
@@ -181,7 +181,7 @@ namespace TestApp_MVC.Controllers
 
         // POST: Tests/Create
         [HttpPost]
-        public async Task<IActionResult> Create(Test test)
+        public string Create(Test test)
         {
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
             Test dbTest = new Test()
@@ -206,7 +206,7 @@ namespace TestApp_MVC.Controllers
 
             _context.SaveChanges();
 
-            return View();
+            return "200";
         }
 
         // GET: Tests/Take
