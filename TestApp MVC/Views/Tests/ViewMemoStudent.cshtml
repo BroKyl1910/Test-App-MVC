@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Take Test";
+    ViewData["Title"] = "ViewMemoStudent";
 }
 
 <img class="yellow-bg-img" src="~/images/Background.png" />
@@ -7,20 +7,23 @@
 <div class="body-content">
     <div class="container">
         <div class="header-wrapper">
-            <h1>Take Test</h1>
+            <h1>View Memo</h1>
         </div>
         <div class="create-test-container">
-            <input type="hidden" id="testID" value="@ViewBag.TestID"/>
-            <h2 class="test-title-text">@ViewBag.TestTitle</h2>
+            <input type="hidden" id="testID" value="@ViewBag.Test.TestId" />
+            <div class="header-wrapper">
+                <h2 class="test-title-text">@ViewBag.Test.Title</h2>
+                <span class="test-percentage">@ViewBag.TestPerc%</span>
+            </div>
             <div class="test-details column">
-                <span class="test-module-text extra-info">@ViewBag.Module</span>
-                <span class="test-due-date-text extra-info">Due @ViewBag.DueDate</span>
+                <span class="test-module-text extra-info">@ViewBag.Test.Module</span>
+                <span class="test-due-date-text extra-info">Due @ViewBag.Test.DueDate.Date.ToShortDateString()</span>
             </div>
 
             <div class="question-container">
                 <h2 class="question-heading">Question 1</h2>
                 <span class="question-text">Question text goes here</span>
-                <h3>Answers</h3>
+                <h3>Your Answer</h3>
                 <div class="answers-wrapper">
                     <div class="answer-container">
                         <div class="radio-label-group">
@@ -44,15 +47,20 @@
                         <span class="answer-text c-text">Answer C</span>
                     </div>
                 </div>
-                <span class="text-danger error-message question-error"></span>
-                <button class="default-yellow-button next-question-button">Next Question</button>
+                <span class="error-message correct-output correct-answer">Correct Answer: B</span>
+                <div class="button-container">
+                    <button class="default-flat-button prev-question-button">Previous Question</button>
+                    <button class="default-yellow-button next-question-button">Next Question</button>
+                </div>
             </div>
 
             <span class="text-danger error-message test-error"></span>
-            <button class="default-yellow-button finish-test-button">Finish Test</button>
+            <button class="default-yellow-button finish-test-button">Done</button>
         </div>
     </div>
 </div>
 
-<script src="~/js/takeTest.js"></script>
+<script src="~/js/viewMemoStudent.js"></script>
+
+
 

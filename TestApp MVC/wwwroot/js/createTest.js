@@ -21,7 +21,7 @@ var bInput = $('.b-input');
 var cRadio = $('.c-radio');
 var cInput = $('.c-input');
 var nextQuestionButton = $('.new-question-button');
-var finishTestButton = $('.save-test-button');
+var doneButton = $('.save-test-button');
 
 // Variables to store and control creation of questions
 var testTitle;
@@ -38,7 +38,7 @@ $(nextQuestionButton).on('click', () => {
     }
 });
 
-$(finishTestButton).on('click', () => {
+$(doneButton).on('click', () => {
     //If current question is blank, just save previous questions in case user doesn't fully understand UI
     if (questionEmpty()) {
         saveTest();

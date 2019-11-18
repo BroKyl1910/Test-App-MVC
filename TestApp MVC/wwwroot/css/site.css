@@ -310,6 +310,11 @@ ul.test-ul {
   background: white;
   display: flex;
   flex-direction: column; }
+  .create-test-container .header-wrapper .test-percentage {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-right: 50px; }
   .create-test-container h2 {
     margin-top: 30px;
     margin-left: 15px; }
@@ -330,10 +335,19 @@ ul.test-ul {
     justify-content: space-around; }
     .create-test-container .test-details.column .form-control {
       flex-basis: 30%; }
+  .create-test-container .button-container {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+    align-self: flex-end; }
   .create-test-container .default-yellow-button {
     width: fit-content;
     align-self: flex-end;
-    margin: 0 30px 30px 30px; }
+    margin: 30px 30px 30px 0; }
+  .create-test-container .default-flat-button {
+    width: fit-content;
+    align-self: flex-end;
+    margin: 30px 5px 30px 30px; }
   .create-test-container .question-container {
     width: 90%;
     margin: 30px;
@@ -370,6 +384,9 @@ ul.test-ul {
         .create-test-container .question-container .answers-wrapper .answer-container .answer-text {
           width: 50%; }
   .create-test-container .error-message {
+    display: block;
+    margin: 15px; }
+  .create-test-container .success-message {
     display: block;
     margin: 15px; }
 

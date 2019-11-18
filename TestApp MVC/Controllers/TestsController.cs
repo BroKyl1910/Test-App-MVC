@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using TestApp.MVC.Models;
 using TestApp.MVC.ViewModels;
 
@@ -33,7 +34,7 @@ namespace TestApp_MVC.Controllers
             List<Test> tests = new List<Test>();
             List<StudentTestsViewModel> viewModels = new List<StudentTestsViewModel>();
             bool isLectuer = user.UserType == 1;
-            
+
             if (!isLectuer)
             {
                 //Student
@@ -48,7 +49,7 @@ namespace TestApp_MVC.Controllers
                 {
                     modules = allModules;
                 }
-                tests = _context.Test.Where(t => modules.Any(m => m.ModuleId == t.ModuleId) && t.Published==true).OrderBy(t => t.DueDate).ThenBy(t => t.Title).ToList();
+                tests = _context.Test.Where(t => modules.Any(m => m.ModuleId == t.ModuleId) && t.Published == true).OrderBy(t => t.DueDate).ThenBy(t => t.Title).ToList();
                 viewModels = tests.Select(t => new StudentTestsViewModel()
                 {
                     Test = t,
@@ -111,7 +112,7 @@ namespace TestApp_MVC.Controllers
                 return RedirectToAction("Login", "Users");
             }
 
-            if(HttpContext.Session.GetInt32("UserType") != 1)
+            if (HttpContext.Session.GetInt32("UserType") != 1)
             {
                 //Unauthorized
                 return RedirectToAction("Index", "Tests");
@@ -143,7 +144,7 @@ namespace TestApp_MVC.Controllers
             _context.SaveChanges();
 
             List<Question> questions = test.Question.ToList();
-            foreach(Question question in questions)
+            foreach (Question question in questions)
             {
                 question.TestId = dbTest.TestId;
                 _context.Question.Add(question);
@@ -162,7 +163,7 @@ namespace TestApp_MVC.Controllers
 
             ViewBag.TestID = test.TestId;
             ViewBag.TestTitle = test.Title;
-            ViewBag.Module = _context.Module.First(m=> m.ModuleId == test.ModuleId);
+            ViewBag.Module = _context.Module.First(m => m.ModuleId == test.ModuleId);
             ViewBag.DueDate = test.DueDate.ToShortDateString();
             return View();
         }
@@ -172,6 +173,18 @@ namespace TestApp_MVC.Controllers
         {
             List<Question> questions = _context.Question.Where(q => q.TestId == testID).ToList();
             return questions;
+        }
+
+        // GET: Tests/Answers
+        public string Answers(int testID)
+        {
+            User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
+            var answers = _context.Answer.Where(a => a.TestId == testID && a.Username == user.Username).Select(a => new
+            {
+                UserAnswer = a.UserAnswer,
+                Correct = a.Correct
+            }).ToList();
+            return JsonConvert.SerializeObject(answers);
         }
 
         // POST: Tests/Take
@@ -213,7 +226,7 @@ namespace TestApp_MVC.Controllers
             result.ResultDate = DateTime.Now.Date;
             _context.Result.Add(result);
 
-            
+
             _context.SaveChanges();
 
             return View();
@@ -226,6 +239,18 @@ namespace TestApp_MVC.Controllers
             Test test = _context.Test.First(t => t.TestId == testID);
             test.Published = published;
             _context.SaveChanges();
+        }
+
+        // GET: Tests/Memo
+        public ActionResult Memo(int testID)
+        {
+            User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
+            Test test = _context.Test.First(t => t.TestId == testID);
+            test.Module = _context.Module.First(m => m.ModuleId == test.ModuleId);
+            int testPerc = (int) _context.Result.First(r => r.Username == user.Username && r.TestId == testID).ResultPercentage;
+            ViewBag.Test = test;
+            ViewBag.TestPerc = testPerc;
+            return View("ViewMemoStudent");
         }
 
         private bool TestExists(int id)
