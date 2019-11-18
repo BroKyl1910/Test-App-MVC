@@ -37,7 +37,7 @@ namespace TestApp_MVC.Controllers
         private IActionResult IndexLecturer(User user)
         {
             var modules = _context.LecturerAssignment.Where(la => la.Username.Equals(user.Username)).Select(la => la.Module).ToList();
-            List<Test> tests = _context.Test.Where(t => t.Username.Equals(user.Username)).OrderBy(t => t.DueDate).ThenBy(t => t.Title).Take(6).ToList();
+            List<Test> tests = _context.Test.Where(t => t.Username.Equals(user.Username) && t.DueDate.CompareTo(DateTime.Today) >= 0).OrderBy(t => t.DueDate).ThenBy(t => t.Title).Take(6).ToList();
 
             ViewBag.Tests = tests;
             return View("IndexLecturer");
@@ -48,7 +48,7 @@ namespace TestApp_MVC.Controllers
             //Get list of modules the student does
             List<Course> studentCourses = _context.StudentAssignment.Where(sa=> sa.Username == user.Username).Select(sa => sa.Course).ToList();
             List<Module> studentModules = _context.ModuleCourse.Where(mc => studentCourses.Any(sc => sc.CourseId == mc.CourseId)).Select(mc=> mc.Module).ToList();
-            List<Test> tests = _context.Test.Where(t => studentModules.Any(sm => sm.ModuleId == t.ModuleId) && t.Published==true).OrderBy(t => t.DueDate).ThenBy(t => t.Title).ToList();
+            List<Test> tests = _context.Test.Where(t => studentModules.Any(sm => sm.ModuleId == t.ModuleId) && t.Published==true && t.DueDate.CompareTo(DateTime.Today) >= 0).OrderBy(t => t.DueDate).ThenBy(t => t.Title).ToList();
 
             ViewBag.Tests = tests.Where(t => !_context.Result.Any(r => r.Username == user.Username && r.TestId == t.TestId)).Take(6).ToList();
             return View("IndexStudent");
