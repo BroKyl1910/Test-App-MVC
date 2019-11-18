@@ -172,3 +172,6 @@ E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.
 E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.csproj.CopyComplete
 E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\ViewMemoLecturer.cshtml.g.cs
 E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Edit.cshtml.g.cs
+F:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Edit.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\ViewMemoLecturer.g.cshtml.cs
+F:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Results\Index.g.cshtml.cs

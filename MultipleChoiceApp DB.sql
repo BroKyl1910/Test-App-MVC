@@ -188,7 +188,7 @@ update test set DueDate = '2019-09-18' where testID = 1
 select * from result
 
 select * from test
-select * from result
+select * from result join test on result.TestID = test.testid
 
 update result set ResultDate = dateadd(day, rand(checksum(newid()))*(1+datediff(day, '2019-08-17 00:00:00', '2019-09-17 00:00:00')),'2019-08-17 00:00:00')
 where ResultDate is null
@@ -199,6 +199,7 @@ where ResultID = 12
 select * from StudentAssignment join Course
 on StudentAssignment.CourseID = Course.CourseID
 
-select * from test
+select * from [user]
 
 update test set published = 1 where TestID = 4
+

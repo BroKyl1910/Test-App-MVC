@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Results";
+}
+
+<img class="yellow-bg-img" src="~/images/Background.png" />
+
+<div class="body-content">
+    <div class="container">
+        <div class="header-wrapper">
+            <h1>Results</h1>
+            @if (ViewBag.Modules.Count > 1)
+            {
+                <select id="module-select">
+                    @foreach (TestApp.MVC.Models.Module module in ViewBag.Modules)
+                    {
+                        <option data-id="@module.ModuleId" value="@module.ModuleId">@module.ModuleName</option>
+                    }
+                </select>
+            }
+        </div>
+        <div class="tests-wrapper results-index-container">
+            <div class="row">
+                <div class="average-graph">
+                </div>
+            </div>
+            <div class="test-container">
+                <h3>Results for <span id="test-title"></span></h3>
+                <ul class="results-ul">
+                    @*<li class="results-li"><span class="result-name">Kyle Brooks</span><span class="result-percentage">75%</span></li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/averagePerTest.js"></script>
+

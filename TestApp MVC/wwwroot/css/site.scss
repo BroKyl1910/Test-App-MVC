@@ -569,6 +569,63 @@ ul.test-ul {
     }
 }
 
+.results-index-container {
+    .average-graph {
+        align-self: center;
+        height: 500px;
+        background: white;
+        margin: 10px 0;
+        text-align: center;
+        border-radius: $border-radius;
+        box-shadow: $inverted-box-shadow;
+        //removed when graph is working
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .test-container {
+        margin-top: 5px;
+        width: 50%;
+        display: none;
+       
+        .results-ul {
+            list-style: none;
+            width: 80%;
+            padding: 10px;
+            margin-top: 15px;
+            max-height: 200px;
+            overflow: auto;
+            
+
+            .results-li {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 15px;
+                border-radius: $border-radius;
+                box-shadow: $straight-down-box-shadow;
+
+                &:hover{
+                    background: darken(white, $darken-perc);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.c3 line {
+    stroke: white;
+}
+
+.c3 path.domain {
+    stroke: rgba(0,0,0,0.2);
+}
+
+
+
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
