@@ -416,7 +416,7 @@ ul.test-ul {
     width: 80%;
     padding: 10px;
     margin-top: 15px;
-    max-height: 200px;
+    max-height: 250px;
     overflow: auto; }
     .results-index-container .test-container .results-ul .results-li {
       display: flex;
@@ -424,7 +424,8 @@ ul.test-ul {
       justify-content: space-between;
       padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4); }
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+      margin-bottom: 10px; }
       .results-index-container .test-container .results-ul .results-li:hover {
         background: #e6e6e6;
         cursor: pointer; }

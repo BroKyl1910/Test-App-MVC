@@ -175,3 +175,4 @@ E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.
 F:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Edit.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\ViewMemoLecturer.g.cshtml.cs
 F:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Results\Index.g.cshtml.cs
+E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Results\Index.cshtml.g.cs

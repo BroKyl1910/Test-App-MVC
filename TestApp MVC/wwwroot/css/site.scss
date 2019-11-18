@@ -595,7 +595,7 @@ ul.test-ul {
             width: 80%;
             padding: 10px;
             margin-top: 15px;
-            max-height: 200px;
+            max-height: 250px;
             overflow: auto;
             
 
@@ -606,6 +606,7 @@ ul.test-ul {
                 padding: 15px;
                 border-radius: $border-radius;
                 box-shadow: $straight-down-box-shadow;
+                margin-bottom: 10px;
 
                 &:hover{
                     background: darken(white, $darken-perc);
