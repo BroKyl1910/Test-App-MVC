@@ -1,11 +1,33 @@
-﻿onload = () => {
-    //https://stackoverflow.com/questions/12346381/set-date-in-input-type-date
-    //Set date picker to today
-    var now = new Date();
-    var day = ("0" + now.getDate()).slice(-2);
-    var month = ("0" + (now.getMonth() + 1)).slice(-2);
-    var today = now.getFullYear() + "-" + (month) + "-" + (day);
-    $('.test-due-date-select').val(today);
+﻿// Variables to store and control creation of questions
+var testTitle;
+var testDueDate;
+var testModuleID;
+var testID;
+var test = {};
+var questionIndex = 0;
+
+onload = () => {
+    testID = $('#test-id').val();
+    $.ajax({
+        url: '/Tests/MemoQuestions',
+        method: 'get',
+        data: {
+            testID: testID
+        },
+        success: (_test) => {
+            console.log(_test);
+            test = _test;
+            $('.test-due-date-select').val(test.dueDate.replace(new RegExp('/', 'g'), '-'));
+            clearQuestion();
+        }
+    });
+
+    ////https://stackoverflow.com/questions/12346381/set-date-in-input-type-date
+    ////Set date picker to today
+    //var now = new Date();
+    //var day = ("0" + now.getDate()).slice(-2);
+    //var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    //var today = now.getFullYear() + "-" + (month) + "-" + (day);
 }
 
 //jQuery components
@@ -23,12 +45,6 @@ var cInput = $('.c-input');
 var nextQuestionButton = $('.new-question-button');
 var saveTestButton = $('.save-test-button');
 
-// Variables to store and control creation of questions
-var testTitle;
-var testDueDate;
-var testModuleID;
-var questions = [];
-var questionIndex = 0;
 
 // Store all questions in memory then when save test is clicked, send test to server
 $(nextQuestionButton).on('click', () => {
@@ -75,6 +91,7 @@ function validateQuestion() {
 function saveAnswer() {
     if (validateQuestion()) {
         var question = {
+            QuestionID: test.questions[questionIndex].questionID,
             QuestionText: $(questionTextInput).val(),
             CorrectAnswer: parseInt($('input[name=correct-answer-radio]:checked').val()),
             Answer1: $(aInput).val(),
@@ -82,9 +99,9 @@ function saveAnswer() {
             Answer3: $(cInput).val()
         };
 
-        questions[questionIndex] = question;
-        console.log(question);
-        console.log(questions);
+        test.questions[questionIndex] = question;
+        console.log(test.questions[questionIndex]);
+        console.log(test.questions);
 
         return true;
     }
@@ -92,23 +109,21 @@ function saveAnswer() {
 
 function saveTest() {
     if (validTest()) {
-        var test = {
-            Title: $(testTitleInput).val(),
-            ModuleID: $(testModuleSelect).val(),
-            DueDate: $(testDueDateSelect).val(),
-            Question: questions
-        }
+        test.title = $(testTitleInput).val();
+        test.moduleID = $(testModuleSelect).val();
+        test.dueDate = $(testDueDateSelect).val();
+
 
         console.log(test);
         console.log("Saving Test");
-
+        test.question = test.questions;
         $.ajax({
-            url: '/Tests/Create',
+            url: '/Tests/Edit',
             method: 'POST',
             data: {
                 test: test
             },
-            success: () => {
+            success: (res) => {
                 window.location.replace('/Tests/Index');
             }
 
@@ -117,7 +132,7 @@ function saveTest() {
 }
 
 function validTest() {
-    if (questions.length == 0) {
+    if (test.questions.length == 0) {
         $('.test-error').text('Please create at least 1 question');
         return false;
     }
@@ -145,12 +160,19 @@ function validTest() {
 
 // Clears currently filled form and display new question index
 function clearQuestion() {
+    if (questionIndex == test.questions.length - 1) {
+        $(nextQuestionButton).css('visibility', 'hidden');
+    }
+
     $(questionHeading).text('Question ' + (questionIndex + 1));
-    $(questionTextInput).val('');
-    $(aInput).val('');
-    $(bInput).val('');
-    $(cInput).val('');
-    $(aRadio).prop("checked", true);
+    $(questionTextInput).val(test.questions[questionIndex].questionText);
+    $(aInput).val(test.questions[questionIndex].answer1);
+    $(bInput).val(test.questions[questionIndex].answer2);
+    $(cInput).val(test.questions[questionIndex].answer3);
+
+    var radioButtons = [$(aRadio), $(bRadio), $(cRadio)];
+    $(radioButtons[test.questions[questionIndex].correctAnswer]).prop('checked', 'checked');
+
 }
 
 function isEmpty(el) {

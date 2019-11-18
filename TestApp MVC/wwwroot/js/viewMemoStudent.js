@@ -9,7 +9,7 @@ var cText = $('.c-text');
 var cRadio = $('.c-radio');
 var nextQuestionButton = $('.next-question-button');
 var prevQuestionButton = $('.prev-question-button');
-var doneButton = $('.finish-test-button');
+var saveTestButton = $('.finish-test-button');
 
 // Variables to store and control creation of questions
 var testID;
@@ -78,6 +78,9 @@ function displayQuestion() {
     //Display prev/next
     if (questionIndex == questions.length - 1) {
         $(nextQuestionButton).css('visibility', 'hidden');
+        if (questions.length == 1) {
+            $(prevQuestionButton).css('visibility', 'hidden');
+        }
     } else if (questionIndex == 0) {
         $(prevQuestionButton).css('visibility', 'hidden');
     } else {
@@ -98,6 +101,6 @@ $(prevQuestionButton).on('click', () => {
 
 });
 
-$(doneButton).on('click', () => {
+$(saveTestButton).on('click', () => {
     window.location.replace('/Tests/Index');
 });

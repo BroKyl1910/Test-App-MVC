@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "ViewMemoStudent";
+    ViewData["Title"] = "View Memo Lecturer";
 }
 
 <img class="yellow-bg-img" src="~/images/Background.png" />
@@ -13,7 +13,7 @@
             <input type="hidden" id="testID" value="@ViewBag.Test.TestId" />
             <div class="header-wrapper">
                 <h2 class="test-title-text">@ViewBag.Test.Title</h2>
-                <span class="test-percentage">@ViewBag.TestPerc%</span>
+                <a href="/Tests/Edit?testID=@ViewBag.Test.TestId" class="default-flat-button">Edit Test</a>
             </div>
             <div class="test-details column">
                 <span class="test-module-text extra-info">@ViewBag.Test.Module</span>
@@ -23,7 +23,7 @@
             <div class="question-container">
                 <h2 class="question-heading"></h2>
                 <span class="question-text"></span>
-                <h3>Your Answer</h3>
+                <h3>Correct Answer</h3>
                 <div class="answers-wrapper">
                     <div class="answer-container">
                         <div class="radio-label-group">
@@ -47,7 +47,7 @@
                         <span class="answer-text c-text"></span>
                     </div>
                 </div>
-                <span class="error-message correct-output correct-answer">Correct Answer: B</span>
+                
                 <div class="button-container">
                     <button class="default-flat-button prev-question-button">Previous Question</button>
                     <button class="default-yellow-button next-question-button">Next Question</button>
@@ -60,7 +60,7 @@
     </div>
 </div>
 
-<script src="~/js/viewMemoStudent.js"></script>
+<script src="~/js/viewMemoLecturer.js"></script>
 
 
 

@@ -315,6 +315,10 @@ ul.test-ul {
     font-weight: bold;
     margin-top: 30px;
     margin-right: 50px; }
+  .create-test-container .header-wrapper .default-flat-button {
+    margin-top: 30px;
+    margin-right: 50px;
+    margin-bottom: 0; }
   .create-test-container h2 {
     margin-top: 30px;
     margin-left: 15px; }

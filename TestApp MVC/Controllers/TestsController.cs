@@ -85,23 +85,77 @@ namespace TestApp_MVC.Controllers
 
 
         // GET: Tests/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Edit(int testID)
         {
-            if (id == null)
+            User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
+            bool isLecturer = user.UserType == 1;
+            if (!isLecturer)
             {
-                return NotFound();
+                //students unauthorised
+                return RedirectToAction("Index");
             }
+            Test test = _context.Test.First(t => t.TestId == testID);
+            test.Module = _context.Module.First(m => m.ModuleId == test.ModuleId);
+            var modules = _context.LecturerAssignment.Where(la => la.Username == user.Username).Select(la => la.Module).ToList();
 
-            var test = await _context.Test
-                .Include(t => t.Module)
-                .Include(t => t.UsernameNavigation)
-                .FirstOrDefaultAsync(m => m.TestId == id);
-            if (test == null)
+            ViewBag.Modules = modules;
+            ViewBag.Test = test;
+            return View();
+        }
+
+        public JsonTest MemoQuestions(int testID)
+        {
+            Test dbTest = _context.Test.First(t => t.TestId == testID);
+            JsonTest jsonTest = new JsonTest()
             {
-                return NotFound();
-            }
+                TestID = dbTest.TestId,
+                Title = dbTest.Title,
+                ModuleID = dbTest.ModuleId,
+                DueDate = dbTest.DueDate.ToShortDateString()
+            };
 
-            return View(test);
+            List<Question> dbQuestions = _context.Question.Where(q => q.TestId == testID).ToList();
+            List<JsonQuestion> jsonQuestions = dbQuestions.Select(q => new JsonQuestion()
+            {
+                QuestionID = q.QuestionId,
+                QuestionText = q.QuestionText,
+                Answer1 = q.Answer1,
+                Answer2 = q.Answer2,
+                Answer3 = q.Answer3,
+                CorrectAnswer = q.CorrectAnswer
+            }).ToList();
+
+            jsonTest.Questions = jsonQuestions;
+
+            return jsonTest;
+        }
+
+        [HttpPost]
+        public async Task<string> Edit(Test test)
+        {
+            User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
+            Test dbTest = _context.Test.First(t => t.TestId == test.TestId);
+            dbTest.Username = user.Username;
+            dbTest.ModuleId = test.ModuleId;
+            dbTest.Title = test.Title;
+            dbTest.DueDate = test.DueDate;
+            dbTest.PublishDate = DateTime.Now.Date;
+
+            _context.SaveChanges();
+
+            List<Question> dbQuestions = _context.Question.Where(q=> q.TestId == test.TestId).ToList();
+            List<Question> questions = test.Question.ToList();
+            for (int i = 0; i < test.Question.Count; i++)
+            {
+                dbQuestions[i].QuestionText = questions[i].QuestionText;
+                dbQuestions[i].Answer1 = questions[i].Answer1;
+                dbQuestions[i].Answer2 = questions[i].Answer2;
+                dbQuestions[i].Answer3 = questions[i].Answer3;
+                dbQuestions[i].CorrectAnswer = questions[i].CorrectAnswer;
+            }
+            _context.SaveChanges();
+
+            return "200";
         }
 
         // GET: Tests/Create
@@ -247,10 +301,16 @@ namespace TestApp_MVC.Controllers
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
             Test test = _context.Test.First(t => t.TestId == testID);
             test.Module = _context.Module.First(m => m.ModuleId == test.ModuleId);
-            int testPerc = (int) _context.Result.First(r => r.Username == user.Username && r.TestId == testID).ResultPercentage;
+            bool isLecturer = user.UserType == 1;
+            if (!isLecturer)
+            {
+                //student
+                int testPerc = (int)_context.Result.First(r => r.Username == user.Username && r.TestId == testID).ResultPercentage;
+                ViewBag.TestPerc = testPerc;
+
+            }
             ViewBag.Test = test;
-            ViewBag.TestPerc = testPerc;
-            return View("ViewMemoStudent");
+            return isLecturer ? View("ViewMemoLecturer") : View("ViewMemoStudent");
         }
 
         private bool TestExists(int id)

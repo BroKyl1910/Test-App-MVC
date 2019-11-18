@@ -170,3 +170,5 @@ E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.
 E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.dll
 E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.pdb
 E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\TestApp MVC.csproj.CopyComplete
+E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\ViewMemoLecturer.cshtml.g.cs
+E:\Tasks\PROG6212 POE\TestAppMVC\Test-App-MVC\TestApp MVC\obj\Debug\netcoreapp2.1\Razor\Views\Tests\Edit.cshtml.g.cs

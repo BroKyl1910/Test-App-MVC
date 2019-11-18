@@ -9,7 +9,7 @@ var cText = $('.c-text');
 var cRadio = $('.c-radio');
 var nextQuestionButton = $('.next-question-button');
 var prevQuestionButton = $('.prev-question-button');
-var doneButton = $('.finish-test-button');
+var saveTestButton = $('.finish-test-button');
 
 // Variables to store and control creation of questions
 var testID;
@@ -28,21 +28,6 @@ onload = () => {
         },
         success: (_questions) => {
             questions = _questions;
-            getAnswers();
-
-        }
-    });
-}
-
-function getAnswers() {
-    $.ajax({
-        url: '/Tests/Answers',
-        method: 'Get',
-        data: {
-            testID: testID
-        },
-        success: (_answers) => {
-            answers = JSON.parse(_answers);
             displayQuestion();
         }
     });
@@ -50,26 +35,27 @@ function getAnswers() {
 
 function displayQuestion() {
     var question = questions[questionIndex];
-    var answer = answers[questionIndex];
-    console.log(questions[questionIndex]);
-    console.log(answer);
     $(questionHeading).text('Question ' + (questionIndex + 1));
     $(questionText).text(question.questionText);
     $(aText).text(question.answer1);
     $(bText).text(question.answer2);
     $(cText).text(question.answer3);
-    var radioButtons = [$(aRadio), $(bRadio), $(cRadio)];
-    $(radioButtons[answer.UserAnswer]).prop('checked', 'checked');
-    $('input[type=radio]').attr('disabled', true);
 
     if (questionIndex == questions.length - 1) {
-        $(nextQuestionButton).hide();
+        $(nextQuestionButton).css('visibility', 'hidden');
+        if (questions.length == 1) {
+            $(prevQuestionButton).css('visibility', 'hidden');
+        }
     } else if (questionIndex == 0) {
-        $(prevQuestionButton).hide();
+        $(prevQuestionButton).css('visibility', 'hidden');
     } else {
-        $(nextQuestionButton).show();
-        $(prevQuestionButton).show();
+        $(nextQuestionButton).css('visibility', 'visible');
+        $(prevQuestionButton).css('visibility', 'visible');
     }
+
+    var radioButtons = [$(aRadio), $(bRadio), $(cRadio)];
+    $(radioButtons[question.correctAnswer]).prop('checked', 'checked');
+    $('input[type=radio]').attr('disabled', true);
 }
 
 $(nextQuestionButton).on('click', () => {
@@ -84,6 +70,6 @@ $(prevQuestionButton).on('click', () => {
 
 });
 
-$(doneButton).on('click', () => {
+$(saveTestButton).on('click', () => {
     window.location.replace('/Tests/Index');
 });
