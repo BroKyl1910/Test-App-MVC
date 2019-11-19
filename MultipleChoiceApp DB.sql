@@ -100,8 +100,6 @@ INSERT INTO [User] VALUES ('BroKyl1910', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5
 INSERT INTO [User] VALUES ('WonSte1900', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Stevie', 'Wonder', 0, '18003143');
 INSERT INTO [User] VALUES ('test123', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Test', 'Student', 0, '18005484');
 INSERT INTO [User] VALUES ('testL123', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Test', 'Lecturer', 1, '18045484');
-INSERT INTO [User] VALUES ('testBind', '$2a$10$EwUV1ZZeKvh4j1KvmDzXP.9b4lJ4eS5FYfFG42aW56Dro5Y687qKC', 'Test', 'Lecturer', 1, '18045488');
-DELETE FROM [User] WHERE Username = 'testBind';
 INSERT INTO Course VALUES('BCAD2', 'Bachelor of Computer Information Sciences in Application Development');
 INSERT INTO Course VALUES('BEdFP', 'Bachelor of Education Foundation Phase');
 INSERT INTO Module VALUES('PROG6212', 'Programming 2B');
@@ -176,6 +174,7 @@ SELECT * FROM [Test]
 SELECT * FROM [Question]
 
 INSERT INTO LecturerAssignment VALUES('brokyl1910','CLDV6212');
+INSERT INTO LecturerAssignment VALUES('testL123','CLDV6212');
 select * from [user]
 select * from [StudentAssignment]
 select * from [LecturerAssignment]
