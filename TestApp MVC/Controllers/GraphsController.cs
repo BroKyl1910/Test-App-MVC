@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -55,8 +56,9 @@ namespace TestApp_MVC.Controllers
 
         public string AveragePerModule(string moduleID)
         {
+            User user = _context.User.First(u => u.Username == HttpContext.Session.GetString("Username"));
             Module module = _context.Module.First(m => m.ModuleId == moduleID);
-            var tests = _context.Test.Where(t => t.ModuleId == moduleID).ToList();
+            var tests = _context.Test.Where(t => t.ModuleId == moduleID && t.Username==user.Username).ToList();
             var results = _context.Result.Where(r => tests.Any(t => t.TestId == r.TestId)).ToList();
 
             List<double> averages = new List<double>();

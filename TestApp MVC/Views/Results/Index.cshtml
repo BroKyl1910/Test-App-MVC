@@ -8,20 +8,29 @@
     <div class="container">
         <div class="header-wrapper">
             <h1>Results</h1>
-            @if (ViewBag.Modules.Count > 1)
-            {
-                <select id="module-select">
-                    @foreach (TestApp.MVC.Models.Module module in ViewBag.Modules)
-                    {
-                        <option data-id="@module.ModuleId" value="@module.ModuleId">@module.ModuleName</option>
-                    }
-                </select>
-            }
+            <select id="module-select">
+                @foreach (TestApp.MVC.Models.Module module in ViewBag.Modules)
+                {
+                    <option data-id="@module.ModuleId" value="@module.ModuleId">@module.ModuleName</option>
+                }
+            </select>
         </div>
         <div class="tests-wrapper results-index-container">
             <div class="row">
-                <div class="average-graph">
-                </div>
+                @if (ViewBag.HasTests == true)
+                {
+                    <div class="average-graph">
+                    </div>
+                    <script src="~/js/averagePerTest.js"></script>
+                }
+                else
+                {
+                    <div class="col-md-6 col-sm-6">
+                        <div class="test-container empty">
+                            <h2 class="test-heading no-tests">No Results</h2>
+                        </div>
+                    </div>
+                }
             </div>
             <div class="test-container">
                 <h3>Results for <span id="test-title"></span></h3>
@@ -32,6 +41,3 @@
         </div>
     </div>
 </div>
-
-<script src="~/js/averagePerTest.js"></script>
-

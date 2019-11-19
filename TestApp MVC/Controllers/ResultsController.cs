@@ -21,10 +21,10 @@ namespace TestApp_MVC.Controllers
             User user = _context.User.First(u => u.Username == HttpContext.Session.GetString("Username"));
             if (user.UserType == 0) return View("Index", "Tests");
 
-            List<Test> tests = _context.Test.Where(t => t.Username == user.Username).OrderByDescending(t => t.DueDate).ThenBy(t => t.Title).ToList();
+            bool hasTests = _context.Test.Any(t => t.Username == user.Username);
             List<Module> modules = _context.LecturerAssignment.Where(la => la.Username == user.Username).Select(la => la.Module).ToList();
 
-            ViewBag.Tests = tests;
+            ViewBag.HasTests = hasTests;
             ViewBag.Modules = modules;
             return View();
         }

@@ -589,7 +589,7 @@ ul.test-ul {
         margin-top: 5px;
         width: 50%;
         display: none;
-       
+
         .results-ul {
             list-style: none;
             width: 80%;
@@ -597,7 +597,7 @@ ul.test-ul {
             margin-top: 15px;
             max-height: 250px;
             overflow: auto;
-            
+
 
             .results-li {
                 display: flex;
@@ -608,12 +608,16 @@ ul.test-ul {
                 box-shadow: $straight-down-box-shadow;
                 margin-bottom: 10px;
 
-                &:hover{
+                &:hover {
                     background: darken(white, $darken-perc);
                     cursor: pointer;
                 }
             }
         }
+    }
+
+    .test-container.empty {
+        display: block;
     }
 }
 

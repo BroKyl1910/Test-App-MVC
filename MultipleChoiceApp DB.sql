@@ -1,4 +1,3 @@
-
 use master
 DROP DATABASE TestApp;
 go
@@ -202,3 +201,4 @@ select * from [user]
 
 update test set published = 1 where TestID = 4
 
+select * from [user]

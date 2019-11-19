@@ -20,10 +20,6 @@ function drawGraph() {
         success: (data) => {
             data = JSON.parse(data);
             testIDs = data.testIDs;
-            if (data.yAverages.length == 0) {
-                $('.average-graph').css('visibility', 'hidden');
-                return;
-            }
 
             var xTickValues = data.xTests.slice();
             var yTickValues = data.yAverages.slice();

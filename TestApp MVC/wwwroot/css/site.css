@@ -430,6 +430,9 @@ ul.test-ul {
         background: #e6e6e6;
         cursor: pointer; }
 
+.results-index-container .test-container.empty {
+  display: block; }
+
 .c3 line {
   stroke: white; }
 
