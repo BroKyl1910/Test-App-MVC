@@ -115,20 +115,17 @@
         formData.append("confirmPassword", confirmPassword);
         formData.append("course", course);
         formData.append("modules", modules);
-        /*Editing = true used to determine whether an image is required or not because if the user is editing,
-          there will already be an image assigned to the product*/
-        formData.append("Editing", true);
 
         var validationRequest = new XMLHttpRequest();
         //Submit for validation
         validationRequest.open("POST", "/Users/Validate");
         validationRequest.onreadystatechange = () => {
-            //Valid, so submit to /Products/Create then redirect
+            //Valid, so submit to register
             if (validationRequest.readyState === 4 && validationRequest.status === 200 && validationRequest.response == "OK") {
                 $('#lbl-error').text("");
                 var registerRequest = new XMLHttpRequest();
                 registerRequest.open("POST", "/Users/Register");
-                //When new product has been posted, redirect to index
+                //redirect
                 registerRequest.onreadystatechange = () => {
                     if (validationRequest.readyState === 4 && validationRequest.status === 200 && validationRequest.response == "OK") {
                         window.location.replace("/Home/Index");

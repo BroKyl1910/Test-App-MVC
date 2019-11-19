@@ -24,10 +24,7 @@ namespace TestApp_MVC.Controllers
         // GET: Tests
         public async Task<IActionResult> Index(string moduleID)
         {
-            if (HttpContext.Session.GetString("Username") == null)
-            {
-                return RedirectToAction("Login", "Users");
-            }
+            if (HttpContext.Session.GetString("Username") == null) return RedirectToAction("Login", "Users");
 
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
             List<Module> allModules = new List<Module>();
@@ -87,6 +84,7 @@ namespace TestApp_MVC.Controllers
         // GET: Tests/Details/5
         public async Task<IActionResult> Edit(int testID)
         {
+            if (HttpContext.Session.GetString("Username") == null) return RedirectToAction("Login", "Users");
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
             bool isLecturer = user.UserType == 1;
             if (!isLecturer)
@@ -212,6 +210,7 @@ namespace TestApp_MVC.Controllers
         // GET: Tests/Take
         public async Task<IActionResult> Take(int testID)
         {
+            if (HttpContext.Session.GetString("Username") == null) return RedirectToAction("Login", "Users");
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
             Test test = _context.Test.First(t => t.TestId == testID);
 
@@ -298,6 +297,7 @@ namespace TestApp_MVC.Controllers
         // GET: Tests/Memo
         public ActionResult Memo(int testID)
         {
+            if (HttpContext.Session.GetString("Username") == null) return RedirectToAction("Login", "Users");
             User user = _context.User.First(u => u.Username.Equals(HttpContext.Session.GetString("Username")));
             Test test = _context.Test.First(t => t.TestId == testID);
             test.Module = _context.Module.First(m => m.ModuleId == test.ModuleId);

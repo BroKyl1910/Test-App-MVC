@@ -18,6 +18,7 @@ namespace TestApp_MVC.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("Username") == null) return RedirectToAction("Login", "Users");
             User user = _context.User.First(u => u.Username == HttpContext.Session.GetString("Username"));
             if (user.UserType == 0) return View("Index", "Tests");
 
